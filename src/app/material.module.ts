@@ -15,7 +15,7 @@ import {
   MdSidenavModule,
   MdSliderModule,
   MdSlideToggleModule,
-  MdSnackBarModule, MdTabsModule, MdToolbarModule, MdTooltipModule, StyleModule
+  MdSnackBarModule, MdTabsModule, MdToolbarModule, MdTooltipModule, MatExpansionModule
 } from "@angular/material";
 import {OverlayModule} from "@angular/cdk/overlay";
 import {PortalModule} from "@angular/cdk/portal";
@@ -50,6 +50,7 @@ const materialModules = [
   PortalModule,
   PlatformModule,
   CompatibilityModule,
+  MatExpansionModule
 ];
 
 @NgModule({
