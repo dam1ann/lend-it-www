@@ -1,65 +1,52 @@
 <div class="content">
-  <md-toolbar class="header-toolbar row " color="primary">
-    <div class="col">
-      <button type="button" md-button>
-        <md-icon>explore</md-icon>
-        <span>LendIt!</span>
-      </button>
-    </div>
+	<md-toolbar class="header-toolbar row " color="primary">
+		<div class="col">
+			<button type="button" md-button>
+				<md-icon>explore</md-icon>
+				<span>LendIt!</span>
+			</button>
+		</div>
 
-    <button type="button" md-raised-button color="accent">
-      <span>Register</span>
-    </button>
-  </md-toolbar>
-  <md-toolbar></md-toolbar>
+		<button type="button" md-raised-button color="accent">
+			<span>Register</span>
+		</button>
+	</md-toolbar>
+	<md-toolbar></md-toolbar>
 
-  <div class="spacer"></div>
-  <div class="spacer"></div>
+	<div class="spacer"></div>
+	<div class="spacer"></div>
 
-  <div class="container">
+	<div class="container">
 
-    <md-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
-      <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
-        <h1 class="col">Log in</h1>
-        <div class="spacer"></div>
-        <md-input-container class="col">
-          <input type="text"
-                 mdInput
-                 name="login"
-                 placeholder="Name"
-                 ngModel>
-        </md-input-container>
-        <md-input-container class="col">
-          <input type="password"
-                 mdInput
-                 name="password"
-                 placeholder="Password"
-                 ngModel>
-        </md-input-container>
+		<md-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
+			<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+				<h1 class="col">Log in</h1>
+				<div class="spacer"></div>
+				<md-input-container class="col">
+					<input type="text" mdInput name="login" placeholder="Name" ngModel>
+				</md-input-container>
+				<md-input-container class="col">
+					<input type="password" mdInput name="password" placeholder="Password" ngModel>
+				</md-input-container>
 
-        <div class="spacer"></div>
+				<div class="spacer"></div>
 
-        <div class="col row justify-content-between">
-          <md-checkbox class="col">
-            Zapamiętaj mnie
-          </md-checkbox>
-          <button md-raised-button
-                  color="accent">
-            <span>Log in</span>
-          </button>
-        </div>
-      </form>
+				<div class="col row justify-content-between">
+					<md-checkbox class="col">
+						Zapamiętaj mnie
+					</md-checkbox>
+					<button md-raised-button color="accent" type="submit">
+						<span>Log in</span>
+					</button>
+				</div>
 
-      <div class="spacer"></div>
+				<div class="col row">
+					<button md-button color="primary">
+						<span>Get start</span>
+					</button>
+				</div>
+			</form>
+		</md-card>
 
-      <div class="col row">
-        <a class="col" href="#"><span>Get start</span></a>
-      </div>
-    </md-card>
-
-
-    {{loginForm.login}}
-    {{loginForm.password}}
-
-  </div>
+	</div>
 </div>

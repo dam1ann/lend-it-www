@@ -1,26 +1,23 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
+import {UserManager} from "../authentication/user.manager";
 import {NgForm} from "@angular/forms";
 
 @Component({
-  selector: 'ng-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'ng-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent {
 
-  constructor(){
+    constructor(private userManager: UserManager) {
+    }
 
-  }
+    onSubmit(data: NgForm) {
+        const login = data.value.login;
+        const password = data.value.password;
 
-  ngOnInit(){
+        this.userManager.authenticate({login, password});
+    }
 
-  }
-
-  onSubmit(data: NgForm){
-    const login = data.login;
-    const password = data.password;
-    
-    console.log('Submited!!! :)');
-  }
 }
