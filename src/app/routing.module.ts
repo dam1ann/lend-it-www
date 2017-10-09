@@ -2,8 +2,6 @@ import {NgModule} from "@angular/core";
 import {UIRouterModule, UIRouter} from "@uirouter/angular";
 import {LoginComponent} from "./login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
-import {NotFoundComponent} from "./404/notFound.Component";
-
 
 const states = [
   {
