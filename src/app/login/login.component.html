@@ -19,34 +19,47 @@
   <div class="container">
 
     <md-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
-      <h1 class="col">Log in</h1>
-      <md-input-container class="col">
-        <input type="text" mdInput placeholder="Name">
-      </md-input-container>
-      <md-input-container class="col">
-        <input type="text" mdInput placeholder="Password">
-      </md-input-container>
-      <md-input-container class="col">
-        <input type="text" mdInput placeholder="Repeat Password">
-      </md-input-container>
+      <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+        <h1 class="col">Log in</h1>
+        <div class="spacer"></div>
+        <md-input-container class="col">
+          <input type="text"
+                 mdInput
+                 name="login"
+                 placeholder="Name"
+                 ngModel>
+        </md-input-container>
+        <md-input-container class="col">
+          <input type="password"
+                 mdInput
+                 name="password"
+                 placeholder="Password"
+                 ngModel>
+        </md-input-container>
+
+        <div class="spacer"></div>
+
+        <div class="col row justify-content-between">
+          <md-checkbox class="col">
+            Zapamiętaj mnie
+          </md-checkbox>
+          <button md-raised-button
+                  color="accent">
+            <span>Log in</span>
+          </button>
+        </div>
+      </form>
 
       <div class="spacer"></div>
 
-      <div class="col row justify-content-between">
-        <md-checkbox class="col">
-          Zapamiętaj mnie
-        </md-checkbox>
-        <button md-raised-button color="accent">
-          <span>Log in</span>
-        </button>
-      </div>
-
       <div class="col row">
-        <button md-button color="primary">
-          <span>Get start</span>
-        </button>
+        <a class="col" href="#"><span>Get start</span></a>
       </div>
     </md-card>
+
+
+    {{loginForm.login}}
+    {{loginForm.password}}
 
   </div>
 </div>
