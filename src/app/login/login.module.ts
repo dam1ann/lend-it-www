@@ -3,7 +3,9 @@ import {MaterialModules} from "../material.module";
 import {LoginComponent} from "./login.component";
 import {FormsModule} from '@angular/forms';
 import {DataFetcherService} from "../http/data_fetcher.service";
-import {UserManager} from "../authentication/user.manager";
+import {UserManager} from "../manager/user.manager";
+import {UserTransformer} from "../transformer/user.transformer";
+import {AccessManager} from "../manager/access.manager";
 
 @NgModule({
     declarations: [
@@ -15,7 +17,9 @@ import {UserManager} from "../authentication/user.manager";
     ],
     providers: [
         UserManager,
-        DataFetcherService
+        DataFetcherService,
+        UserTransformer,
+        AccessManager
     ],
     exports: [LoginComponent]
 })

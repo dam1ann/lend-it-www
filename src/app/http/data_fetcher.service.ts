@@ -6,9 +6,7 @@ export class DataFetcherService {
     constructor(private http: HttpClient) {
     }
 
-    POST(url: string, body: Object) {
-        console.log(url);
-        console.log(body);
+    POST(url: string, body?: Object) {
 
         return this.http.post(url, body, {
             headers: new HttpHeaders()

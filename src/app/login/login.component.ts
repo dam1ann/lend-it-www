@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {UserManager} from "../authentication/user.manager";
+import {UserManager} from "../manager/user.manager";
 import {NgForm} from "@angular/forms";
 
 @Component({
