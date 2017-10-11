@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {MaterialModules} from "../material.module";
 import {FormsModule} from "@angular/forms";
 import {RegistrationComponent} from "./registration.component";
+import {UIRouterModule} from "@uirouter/angular";
 
 @NgModule({
   declarations:[
@@ -9,7 +10,8 @@ import {RegistrationComponent} from "./registration.component";
   ],
   imports:[
     MaterialModules,
-    FormsModule
+    FormsModule,
+    UIRouterModule
   ],
   providers:[],
   exports:[

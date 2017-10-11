@@ -6,7 +6,7 @@ import {RegistrationComponent} from "./registration/registration.component";
 
 const states = [
   {
-    name: 'hello',
+    name: 'login',
     url: '/login',
     component: LoginComponent
   }, {
@@ -15,7 +15,7 @@ const states = [
     component: RegistrationComponent
   }, {
     name: 'dashboard',
-    url: '/dashboard',
+    url: '/',
     component: DashboardComponent
   }
 ];
@@ -24,7 +24,7 @@ const states = [
 @NgModule({
   imports: [
     UIRouterModule.forRoot({
-      otherwise: '/login',
+      otherwise: '/',
       states: states,
       useHash: false,
       // config: function (router: UIRouter) {

@@ -7,9 +7,6 @@
       </button>
     </div>
 
-    <button type="button" md-raised-button color="accent">
-      <span>Register</span>
-    </button>
   </md-toolbar>
   <md-toolbar></md-toolbar>
 
@@ -23,14 +20,6 @@
         <h1 class="col">Registration</h1>
         <div class="spacer"></div>
         <md-input-container class="col">
-          <input type="text"
-                 mdInput
-                 name="login"
-                 placeholder="Name"
-                 ngModel>
-        </md-input-container>
-        <div class="spacer-5"></div>
-        <md-input-container class="col">
           <input type="email"
                  mdInput
                  name="email"
@@ -39,39 +28,71 @@
         </md-input-container>
         <div class="spacer-5"></div>
         <md-input-container class="col">
+          <input type="email"
+                 mdInput
+                 name="email"
+                 placeholder="Repeat e-mail"
+                 ngModel>
+        </md-input-container>
+        <div class="spacer-5"></div>
+
+        <md-input-container class="col">
           <input type="password"
                  mdInput
-                 name="password1"
+                 name="password"
                  placeholder="Password"
                  ngModel>
         </md-input-container>
         <div class="spacer-5"></div>
+
         <md-input-container class="col">
-          <input type="password"
+          <input type="text"
                  mdInput
-                 name="password2"
-                 placeholder="Repeat password"
+                 name="login"
+                 placeholder="Username"
                  ngModel>
         </md-input-container>
+        <div class="spacer-5"></div>
+
+        <div class="col">
+          <md-select placeholder="Sex" name="sex">
+            <md-option [value]="Female">Female</md-option>
+            <md-option [value]="Male">Male</md-option>
+          </md-select>
+        </div>
+
 
         <div class="spacer"></div>
 
         <div class="col row justify-content-between">
-          <md-checkbox class="col">
-            Akceptuję warunki regulaminu
+          <md-checkbox class="col" required>
+            Accept the <a href="#" target="_blank">terms</a> and <a href="#" target="_blank">conditions</a>
           </md-checkbox>
           <div class="spacer-5"></div>
-          <button md-raised-button
-                  color="accent">
-            <span>Log in</span>
-          </button>
+          <md-checkbox class="col">
+            Agree to send newsletter
+          </md-checkbox>
+
+          <div class="spacer"></div>
+
+
+          <div class="col">
+            <button md-raised-button
+                    color="accent">
+              <span>Log in</span>
+            </button>
+          </div>
         </div>
       </form>
 
       <div class="spacer"></div>
+      <div class="spacer"></div>
 
       <div class="col row">
-        <a class="col" href="#"><span>Get start</span></a>
+        <div class="mx-auto">
+          <span>You have an account?</span>
+          <a uiSref="login">Log in</a>
+        </div>
       </div>
     </md-card>
 
