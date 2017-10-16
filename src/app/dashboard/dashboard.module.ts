@@ -1,26 +1,26 @@
 import {NgModule} from "@angular/core";
 import {MaterialModules} from "../material.module";
 import {DashboardComponent} from "./dashboard.component";
-import {HeaderModule} from "../header/header.module";
-import {NavigationModule} from "../navigation/navigation.module";
 import {ItemListModule} from "../item-list/item-list.module";
-
-
+import {HeaderComponent} from "./header/header.component";
+import {UIRouterModule} from "@uirouter/angular";
+import {SettingsModule} from "../settings/settings.module";
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     MaterialModules,
-    HeaderModule,
-    NavigationModule,
-    ItemListModule
+    SettingsModule,
+    ItemListModule,
+    UIRouterModule
   ],
   providers: [],
   exports: [DashboardComponent]
 })
 
-export class DashboardModule{
+export class DashboardModule {
 
 }

@@ -11,6 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RequestInterceptor} from "./listener/interceptor/request.interceptor";
 import {RegistrationModule} from "./registration/registration.module";
 import { APP_CONFIG, APP_CONFIGURATION} from "./config/app.config";
+import {SettingsModule} from "./settings/settings.module";
 
 @NgModule({
     declarations: [
@@ -34,13 +35,13 @@ import { APP_CONFIG, APP_CONFIGURATION} from "./config/app.config";
         LoginModule,
         NotFoundModule,
         RegistrationModule,
+        SettingsModule,
         HttpClientModule,
         RoutingModule
     ],
     bootstrap:
         [AppComponent]
 })
-
 export class AppModule {
 }
 

@@ -3,6 +3,7 @@ import {UIRouterModule} from "@uirouter/angular";
 import {LoginComponent} from "./login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {RegistrationComponent} from "./registration/registration.component";
+import {SettingsComponent} from "./settings/settings.component";
 
 const states = [
   {
@@ -17,6 +18,10 @@ const states = [
     name: 'dashboard',
     url: '/',
     component: DashboardComponent
+  }, {
+    name: 'dashboard.settings',
+    url: 'settings',
+    component: SettingsComponent
   }
 ];
 
