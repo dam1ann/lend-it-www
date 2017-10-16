@@ -1,37 +1,41 @@
 import {DataFetcherService} from "../http/data_fetcher.service";
 import {UserTransformer} from "../transformer/user.transformer";
+import {APP_CONFIG, AppConfig} from "../config/app.config";
 import {AccessManager} from "./access.manager";
-import {Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
+import 'rxjs';
 
 @Injectable()
 export class UserManager {
     constructor(private accessManager: AccessManager,
                 private fetcher: DataFetcherService,
-                private transformer: UserTransformer) {
+                private transformer: UserTransformer,
+                private injector: Injector) {
     }
 
+    private user: UserInterface;
+
     authenticate(loginRequested) {
+        let config: AppConfig = this.injector.get(APP_CONFIG);
 
-        let url = "http://lend-it-api.com/app_dev.php/oauth/v2/token";
-
-        let config = {
-            'client_id': '3_2bi16620185c8wk400s0cs0g0kwgsocwsscwgwcgg804ggw880',
-            'grant_type': 'password',
-            'client_secret': 'mxahs09i9wgg4oo4owg88wccs088wc8sskcscww0ooco0wkgw',
+        let requestData = {
             'password': loginRequested.password,
-            'username': loginRequested.login
+            'username': loginRequested.login,
+            'client_id': config.client_id,
+            'grant_type': config.grant_type,
+            'client_secret': config.client_secret
         };
 
-        this.fetcher.POST(url, config)
-            .subscribe(
-                (authDetail) => {
-                    this.accessManager.authenticate(authDetail);
-                    this.fetcher.POST("http://lend-it-api.com/app_dev.php/api/me")
-                        .subscribe((userDetail) => console.log(this.transformer.transform(userDetail)));
-                },
-                (error) => console.log(['ERROR', error])
-            );
 
-        return true;
+        return this.fetcher.POST(config.auth_url, requestData)
+            .map((response: Response) => this.accessManager.authenticate(response))
+            .flatMap(() => this.fetcher.POST(config.urls.me))
+            .map((userDetail) => {
+                return this.transformer.transform(userDetail);
+            })
+            .subscribe((user) => {
+                console.log(user);
+                return this.user = user;
+            });
     }
 }

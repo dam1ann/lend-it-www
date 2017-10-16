@@ -10,28 +10,37 @@ import {NotFoundModule} from "./404/notFound.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RequestInterceptor} from "./listener/interceptor/request.interceptor";
 import {RegistrationModule} from "./registration/registration.module";
+import { APP_CONFIG, APP_CONFIGURATION} from "./config/app.config";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: RequestInterceptor,
-    multi: true,
-  }],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    DashboardModule,
-    LoginModule,
-    NotFoundModule,
-    RegistrationModule,
-    HttpClientModule,
-    RoutingModule
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true,
+        },
+        {
+            provide: APP_CONFIG,
+            useValue: APP_CONFIGURATION,
+        }
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        DashboardModule,
+        LoginModule,
+        NotFoundModule,
+        RegistrationModule,
+        HttpClientModule,
+        RoutingModule
+    ],
+    bootstrap:
+        [AppComponent]
 })
+
 export class AppModule {
 }
 
