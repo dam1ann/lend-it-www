@@ -32,9 +32,6 @@ const states = [
       otherwise: '/',
       states: states,
       useHash: false,
-      // config: function (router: UIRouter) {
-      // return router.urlService.rules.otherwise('/dashboard');
-      // }
     })
   ],
   exports: [
