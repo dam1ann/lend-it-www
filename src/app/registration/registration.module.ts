@@ -3,6 +3,7 @@ import {MaterialModules} from "../material.module";
 import {FormsModule} from "@angular/forms";
 import {RegistrationComponent} from "./registration.component";
 import {UIRouterModule} from "@uirouter/angular";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations:[
@@ -11,7 +12,8 @@ import {UIRouterModule} from "@uirouter/angular";
   imports:[
     MaterialModules,
     FormsModule,
-    UIRouterModule
+    UIRouterModule,
+    CommonModule
   ],
   providers:[],
   exports:[

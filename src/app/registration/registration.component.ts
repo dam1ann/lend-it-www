@@ -8,7 +8,6 @@ import {Component} from '@angular/core';
 
 export class RegistrationComponent{
 
-
   onSubmit(data){
     console.log(`form submited!`);
   }

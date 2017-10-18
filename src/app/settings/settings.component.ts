@@ -1,4 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, Input, OnChanges} from "@angular/core";
+import {User} from "../model/user.model";
+
 
 @Component({
   selector: 'ng-settings',
@@ -6,6 +8,15 @@ import {Component} from "@angular/core";
   styleUrls: ['./settings.component.scss']
 })
 
-export class SettingsComponent{
+export class SettingsComponent implements OnChanges{
 
+  @Input()user: User;
+
+  constructor(){
+
+  }
+
+  ngOnChanges(){
+
+  }
 }
