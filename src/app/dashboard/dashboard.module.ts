@@ -5,17 +5,23 @@ import {UIRouterModule} from "@uirouter/angular";
 import {SettingsModule} from "../settings/settings.module";
 import {ItemListComponent} from "./item-list/item-list.component";
 import {NavigationComponent} from "./navigation/navigation.component";
+import {ItemComponent} from "./item-list/item/item.component";
+import {CommonModule} from "@angular/common";
+import {FilterComponent} from "./filter/filter.component";
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ItemListComponent,
-    NavigationComponent
+    ItemComponent,
+    NavigationComponent,
+    FilterComponent
   ],
   imports: [
     MaterialModules,
     SettingsModule,
-    UIRouterModule
+    UIRouterModule,
+    CommonModule
   ],
   providers: [],
   exports: [DashboardComponent]
@@ -24,3 +30,4 @@ import {NavigationComponent} from "./navigation/navigation.component";
 export class DashboardModule {
 
 }
+

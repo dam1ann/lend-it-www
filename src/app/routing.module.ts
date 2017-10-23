@@ -14,7 +14,7 @@ const states = [
   }, {
     name: 'registration',
     url: '/registration',
-    component: RegistrationComponent
+    component: RegistrationComponent,
   }, {
     name: 'dashboard',
     url: '/',
