@@ -1,7 +1,6 @@
-///<reference path="../../../node_modules/@angular/forms/src/directives/validators.d.ts"/>
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserManager} from "../manager/user.manager";
-import {FormControl, ValidationErrors, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 
 @Component({
     selector: 'ng-registration',
@@ -9,41 +8,54 @@ import {FormControl, ValidationErrors, Validators} from '@angular/forms';
     styleUrls: ['./registration.component.scss']
 })
 
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit {
     constructor(private userManager: UserManager) {
     }
 
-    errors: Object = {'message': ""};
-    email = new FormControl('', [Validators.required, Validators.email]);
+    errors: Object = {};
 
-    onSubmit(data) {
+    registryGroup: FormGroup;
 
+    ngOnInit() {
+        this.registryGroup = new FormGroup({
+            email: new FormControl('', [Validators.required, Validators.email]),
+            username: new FormControl('', [Validators.required, Validators.minLength(1)]),
+            password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            passwordRepeated: new FormControl('', [Validators.required, Validators.minLength(6)])
+        });
+    }
+
+    onSubmit() {
         let registryData = {
-            'username': data.value.login,
+            'username': this.registryGroup.get('username').value,
             'password': {
-                'first': data.value.password,
-                'second': data.value.passwordRepeated,
+                'first': this.registryGroup.get('password').value,
+                'second': this.registryGroup.get('passwordRepeated').value,
             },
-            'email': this.email.value
+            'email': this.registryGroup.get('email').value
         };
 
 
-        // let errors: Array<string>;
         let response = this.userManager.registry(registryData);
         response.subscribe(
-            response => console.log(response),
+            response => alert('REGISTRED!'),
             errors => {
-                this.errors = JSON.parse(errors.error);
-                this.populateErrors(this.errors);
+                this.populateErrors(JSON.parse(errors.error));
 
                 return this.errors;
             }
         );
     }
 
-    populateErrors(data) {
-        if (data.message) {
-            this.email.setErrors({});
+    populateErrors(data): void {
+        for (let prop in data) {
+            if (true === Array.isArray(data[prop])) {
+                this.registryGroup.get(prop).setErrors({'error': data[prop]});
+            }
+            if (prop === 'password' || prop === 'passwordRepeated') {
+                this.registryGroup.get('passwordRepeated').setErrors({'error': data[prop].first});
+            }
         }
+
     }
 }

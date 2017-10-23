@@ -6,20 +6,19 @@
   <div class="container">
 
     <mat-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
-      <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+      <form [formGroup] = "registryGroup" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
         <h1 class="col">Registration</h1>
         <div class="spacer"></div>
 			<mat-form-field class="col">
 			  <input type="text"
 					 matInput
-					 [formControl]="email"
+					 formControlName="email"
 					 placeholder="E-mail"
 					 ngModel>
 
-				<mat-error *ngIf="email.invalid && errors.message == ''"> Zły email</mat-error>
-				<mat-error *ngIf="errors.message"> {{errors.message}}</mat-error>
+				<mat-error *ngIf="registryGroup.get('email').invalid && undefined === registryGroup.get('email').getError('error')"> Błędny adres email</mat-error>
+				<mat-error *ngIf="registryGroup.get('email').getError('error')"> {{ registryGroup.get('email').getError('error') }}<div class="spacer-5"> </div></mat-error>
 			</mat-form-field>
-		  <!--<mat-error >11111111</mat-error>-->
 		<div class="spacer-5"> </div>
 
 
@@ -27,40 +26,46 @@
         <mat-input-container class="col">
           <input type="password"
                  matInput
-                 name="password"
+				 formControlName="password"
                  placeholder="Password"
                  ngModel>
-        </mat-input-container>
+			<mat-error *ngIf="registryGroup.get('password').invalid && undefined === registryGroup.get('password').getError('error')"> Błędne hasło, minimalnie 6 znaków</mat-error>
+			<mat-error *ngIf="registryGroup.get('password').getError('error')"> {{ registryGroup.get('password').getError('error') }}<div class="spacer-5"> </div></mat-error>
+		</mat-input-container>
         <div class="spacer-5"></div>
 
 	    <mat-input-container class="col">
 		  <input type="password"
                  matInput
-				 name="passwordRepeated"
+				 formControlName="passwordRepeated"
 				 placeholder="Repeat Password"
 				 ngModel>
-	    </mat-input-container>
+			<mat-error *ngIf="registryGroup.get('passwordRepeated').invalid  && undefined === registryGroup.get('passwordRepeated').getError('error')"> Błędne hasło, minimalnie 6 znaków</mat-error>
+			<mat-error *ngIf="registryGroup.get('passwordRepeated').getError('error')"> {{ registryGroup.get('passwordRepeated').getError('error') }}<div class="spacer-5"> </div></mat-error>
+		</mat-input-container>
 	    <div class="spacer-5"></div>
 
         <mat-input-container class="col">
           <input type="text"
                  matInput
-                 name="login"
+				 formControlName="username"
                  placeholder="Username"
                  ngModel>
+			<mat-error *ngIf="registryGroup.get('username').invalid && undefined === registryGroup.get('username').getError('error')"> Błędny login, minimalnie 4 znaki</mat-error>
+			<mat-error *ngIf="registryGroup.get('username').getError('error')"> {{ registryGroup.get('username').getError('error') }}<div class="spacer-5"> </div></mat-error>
         </mat-input-container>
         <div class="spacer-5"></div>
 
-        <div class="col">
-          <mat-select placeholder="Sex">
-            <mat-option [value]="male" #male>
-              Male
-            </mat-option>
-            <mat-option [value]="female" #female>
-              Female
-            </mat-option>
-          </mat-select>
-        </div>
+        <!--<div class="col">-->
+          <!--<mat-select placeholder="Sex">-->
+            <!--<mat-option [value]="male" #male>-->
+              <!--Male-->
+            <!--</mat-option>-->
+            <!--<mat-option [value]="female" #female>-->
+              <!--Female-->
+            <!--</mat-option>-->
+          <!--</mat-select>-->
+        <!--</div>-->
 
 
         <div class="spacer"></div>
