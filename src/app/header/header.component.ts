@@ -1,4 +1,5 @@
-import {Component, Input} from "@angular/core";
+import {Component, OnChanges, OnInit} from "@angular/core";
+import {AccessManager} from "../manager/access.manager";
 
 @Component({
   selector: 'ng-header',
@@ -6,9 +7,16 @@ import {Component, Input} from "@angular/core";
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent{
+export class HeaderComponent implements OnInit{
 
-  @Input() isUser: boolean;
+  loggedIn: boolean;
 
+  constructor(private accessMng: AccessManager) {
+  }
 
+  ngOnInit(): void {
+    this.accessMng.isLoggedIn.subscribe(next => {
+      this.loggedIn = next;
+    });
+  }
 }

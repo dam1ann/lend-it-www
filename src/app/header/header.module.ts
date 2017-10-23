@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {HeaderComponent} from "./header.component";
 import {MaterialModules} from "../material.module";
 import {UIRouterModule} from "@uirouter/angular";
+import {AccessManager} from "../manager/access.manager";
 
 @NgModule({
   declarations:[
@@ -14,6 +15,9 @@ import {UIRouterModule} from "@uirouter/angular";
   exports:[
     HeaderComponent
   ],
+  providers:[
+    AccessManager
+  ]
 
 })
 

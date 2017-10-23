@@ -6,7 +6,8 @@
     </button>
 
   </div>
-  <div class="account_settings">
+
+  <div [hidden]="!loggedIn" class="account_settings">
 
     <!-- Icons -->
     <button type="button" mat-icon-button>
@@ -44,7 +45,9 @@
 
   </div>
 </mat-toolbar>
-
+<mat-toolbar>
+  {{loggedIn}}
+</mat-toolbar>
 <!--
 <mat-toolbar class="row col">
   <div class="col-3 mx-auto">
