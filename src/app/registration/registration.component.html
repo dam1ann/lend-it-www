@@ -5,73 +5,80 @@
 
   <div class="container">
 
-    <md-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
+    <mat-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
       <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
         <h1 class="col">Registration</h1>
         <div class="spacer"></div>
-        <md-input-container class="col">
-          <input type="email"
-                 mdInput
-                 name="email"
-                 placeholder="E-mail"
-                 ngModel>
-        </md-input-container>
-        <div class="spacer-5"></div>
-        <md-input-container class="col">
-          <input type="email"
-                 mdInput
-                 name="email"
-                 placeholder="Repeat e-mail"
-                 ngModel>
-        </md-input-container>
-        <div class="spacer-5"></div>
+			<mat-form-field class="col">
+			  <input type="text"
+					 matInput
+					 [formControl]="email"
+					 placeholder="E-mail"
+					 ngModel>
 
-        <md-input-container class="col">
+				<mat-error *ngIf="email.invalid && errors.message == ''"> Zły email</mat-error>
+				<mat-error *ngIf="errors.message"> {{errors.message}}</mat-error>
+			</mat-form-field>
+		  <!--<mat-error >11111111</mat-error>-->
+		<div class="spacer-5"> </div>
+
+
+
+        <mat-input-container class="col">
           <input type="password"
-                 mdInput
+                 matInput
                  name="password"
                  placeholder="Password"
                  ngModel>
-        </md-input-container>
+        </mat-input-container>
         <div class="spacer-5"></div>
 
-        <md-input-container class="col">
+	    <mat-input-container class="col">
+		  <input type="password"
+                 matInput
+				 name="passwordRepeated"
+				 placeholder="Repeat Password"
+				 ngModel>
+	    </mat-input-container>
+	    <div class="spacer-5"></div>
+
+        <mat-input-container class="col">
           <input type="text"
-                 mdInput
+                 matInput
                  name="login"
                  placeholder="Username"
                  ngModel>
-        </md-input-container>
+        </mat-input-container>
         <div class="spacer-5"></div>
 
         <div class="col">
-          <md-select placeholder="Sex">
-            <md-option [value]="male" #male>
+          <mat-select placeholder="Sex">
+            <mat-option [value]="male" #male>
               Male
-            </md-option>
-            <md-option [value]="female" #female>
+            </mat-option>
+            <mat-option [value]="female" #female>
               Female
-            </md-option>
-          </md-select>
+            </mat-option>
+          </mat-select>
         </div>
 
 
         <div class="spacer"></div>
 
         <div class="col row justify-content-between">
-          <md-checkbox class="col" required>
+          <mat-checkbox class="col" required>
             Accept the <a href="#" target="_blank">terms</a> and <a href="#" target="_blank">conditions</a>
-          </md-checkbox>
+          </mat-checkbox>
           <div class="spacer-5"></div>
-          <md-checkbox class="col">
+          <mat-checkbox class="col">
             Agree to send newsletter
-          </md-checkbox>
+          </mat-checkbox>
 
           <div class="spacer"></div>
 
 
           <div class="col">
-            <button md-raised-button
+            <button mat-raised-button
                     color="accent">
               <span>Log in</span>
             </button>
@@ -88,7 +95,7 @@
           <a uiSref="login">Log in</a>
         </div>
       </div>
-    </md-card>
+    </mat-card>
 
   </div>
 </div>

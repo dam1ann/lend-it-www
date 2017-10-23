@@ -15,6 +15,10 @@ export class UserManager {
 
     private user: UserInterface;
 
+    /**
+     * @param loginRequested
+     * @returns {Subscription}
+     */
     authenticate(loginRequested) {
         let config: AppConfig = this.injector.get(APP_CONFIG);
 
@@ -37,5 +41,24 @@ export class UserManager {
                 console.log(user);
                 return this.user = user;
             });
+    }
+
+    /**
+     * @param requestData
+     */
+    registry(requestData) {
+        let config: AppConfig = this.injector.get(APP_CONFIG);
+        // let errors: Array<string>;
+
+        return this.fetcher.POST(config.urls.registry, requestData)
+            // .subscribe(
+            //     response => console.log(response),
+            //     errors => {
+            //         return JSON.parse(errors.error);
+            //     }
+            // )
+            ;
+
+
     }
 }

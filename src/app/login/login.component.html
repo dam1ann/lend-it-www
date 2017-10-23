@@ -4,32 +4,32 @@
 	<div class="spacer"></div>
 
 	<div class="container">
-		<md-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
+		<mat-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
 
 			<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
 				<h1 class="col">Log in</h1>
 				<div class="spacer"></div>
-				<md-input-container class="col">
+				<mat-input-container class="col">
 					<input type="text"
                  mdInput
                  name="login"
                  placeholder="Name"
                  ngModel>
-				</md-input-container>
-				<md-input-container class="col">
+				</mat-input-container>
+				<mat-input-container class="col">
 					<input type="password"
                  mdInput
                  name="password"
                  placeholder="Password"
                  ngModel>
-				</md-input-container>
+				</mat-input-container>
 
 				<div class="spacer"></div>
 
 				<div class="col row justify-content-between">
-					<md-checkbox class="col">
+					<mat-checkbox class="col">
 						Zapamiętaj mnie
-					</md-checkbox>
+					</mat-checkbox>
 					<button md-raised-button
                   color="accent"
                   type="submit">
@@ -46,7 +46,7 @@
           </div>
 				</div>
 			</form>
-		</md-card>
+		</mat-card>
 
 	</div>
 </div>

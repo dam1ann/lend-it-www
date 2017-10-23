@@ -8,7 +8,8 @@ export interface AppConfig {
     client_secret: string;
     auth_url: string;
     urls: {
-        me: string
+        me: string,
+        registry: string,
     };
 }
 
@@ -18,6 +19,7 @@ export const APP_CONFIGURATION: AppConfig = {
     client_secret: 'mxahs09i9wgg4oo4owg88wccs088wc8sskcscww0ooco0wkgw',
     auth_url: 'http://lend-it-api.com/app_dev.php/oauth/v2/token',
     urls: {
-        me: 'http://lend-it-api.com/app_dev.php/api/me'
+        me: 'http://lend-it-api.com/app_dev.php/api/me',
+        registry: 'http://lend-it-api.com/app_dev.php/api/registry'
     }
 };
