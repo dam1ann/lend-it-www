@@ -1,53 +1,67 @@
 <mat-toolbar color="primary" class="row mainHeader">
-  <div class="menu_section col">
-    <button type="button" uiSref="dashboard" mat-button>
-      <mat-icon>explore</mat-icon>
-      <span>LendIt!</span>
-    </button>
+	<div class="menu_section col">
+		<button type="button" uiSref="dashboard" mat-button>
+			<mat-icon>explore</mat-icon>
+			<span>LendIt!</span>
+		</button>
 
-  </div>
+	</div>
 
-  <div [hidden]="!loggedIn" class="account_settings">
+	<div [hidden]="!loggedIn" class="account_settings">
 
-    <!-- Icons -->
-    <button type="button" mat-icon-button>
-      <mat-icon>search</mat-icon>
-    </button>
-    <button type="button" mat-icon-button>
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
-    <button type="button" mat-icon-button>
-      <mat-icon>person</mat-icon>
-    </button>
-    <button type="button" mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
+		<!-- Icons -->
+		<button type="button" mat-icon-button>
+			<mat-icon>search</mat-icon>
+		</button>
+		<button type="button" mat-icon-button>
+			<mat-icon>shopping_cart</mat-icon>
+		</button>
+		<button type="button" mat-icon-button>
+			<mat-icon>person</mat-icon>
+		</button>
+		<button type="button" mat-icon-button [matMenuTriggerFor]="menu">
+			<mat-icon>more_vert</mat-icon>
+		</button>
 
-    <!-- Person menu -->
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>menu</mat-icon>
-        <span>Your items</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>history</mat-icon>
-        <span>History</span>
-      </button>
-      <button mat-menu-item uiSref="dashboard.settings" >
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>sentiment_very_dissatisfied</mat-icon>
-        <span>Logout</span>
-      </button>
-    </mat-menu>
+		<!-- Person menu -->
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item>
+				<mat-icon>menu</mat-icon>
+				<span>Your items</span>
+			</button>
+			<button mat-menu-item>
+				<mat-icon>history</mat-icon>
+				<span>History</span>
+			</button>
+			<button mat-menu-item uiSref="settings">
+				<mat-icon>settings</mat-icon>
+				<span>Settings</span>
+			</button>
+			<button mat-menu-item>
+				<mat-icon>sentiment_very_dissatisfied</mat-icon>
+				<span>Logout</span>
+			</button>
+		</mat-menu>
 
-  </div>
+	</div>
+
+	<div [hidden]="loggedIn" class="account_settings">
+
+		<button type="button" uiSref="login" mat-button>
+			<span>Login</span>
+		</button>
+
+		<button type="button" uiSref="registration" mat-raised-button color="accent">
+			<span>Registration</span>
+		</button>
+
+	</div>
+
 </mat-toolbar>
 <mat-toolbar>
-  {{loggedIn}}
+	{{loggedIn}}
 </mat-toolbar>
+
 <!--
 <mat-toolbar class="row col">
   <div class="col-3 mx-auto">

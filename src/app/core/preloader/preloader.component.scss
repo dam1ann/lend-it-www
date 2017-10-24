@@ -1,0 +1,28 @@
+.progressBarr{
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index: 100;
+
+	&::before{
+		content:'';
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
+		position: absolute;
+		background: #fff;
+		opacity: 0.8;
+		z-index: 101;
+	}
+
+	mat-spinner{
+		margin:0 auto;
+		position: relative;
+		top:50%;
+		transform: translateY(-100%);
+		z-index: 102;
+	}
+}
