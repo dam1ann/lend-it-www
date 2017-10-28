@@ -1,8 +1,8 @@
-import {DataFetcherService} from "../http/data_fetcher.service";
-import {UserTransformer} from "../transformer/user.transformer";
-import {APP_CONFIG, AppConfig} from "../config/app.config";
-import {AccessManager} from "./access.manager";
-import {Injectable, Injector} from "@angular/core";
+import { DataFetcherService } from "../http/data_fetcher.service";
+import { UserTransformer } from "../transformer/user.transformer";
+import { APP_CONFIG, AppConfig } from "../config/app.config";
+import { AccessManager } from "./access.manager";
+import { Injectable, Injector } from "@angular/core";
 import "rxjs";
 import {Observable} from "rxjs/Observable";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
