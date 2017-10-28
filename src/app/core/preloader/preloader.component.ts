@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {PreloaderService} from "./service/preloader.service";
+import { Component } from "@angular/core";
+import { PreloaderService } from "./service/preloader.service";
 
 @Component({
     selector: 'ng-preloader',

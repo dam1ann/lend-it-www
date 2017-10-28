@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'ng-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+    selector: 'ng-filter',
+    templateUrl: './filter.component.html',
+    styleUrls: ['./filter.component.scss']
 })
 
-export class FilterComponent{
+export class FilterComponent {
 
 }

@@ -1,39 +1,41 @@
-import {Injectable} from "@angular/core";
-import {Auth} from "../model/auth.model";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Observable} from "rxjs/Observable";
+import { Injectable } from "@angular/core";
+import { Auth } from "../model/auth.model";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Observable } from "rxjs/Observable";
 
 
 @Injectable()
 export class AccessManager {
-  private auth;
-  private loggedIn = new BehaviorSubject<boolean>(false);
+    private auth;
+    private loggedIn = new BehaviorSubject<boolean>(true);
 
-  get isLoggedIn(): Observable<boolean> {
-    return this.loggedIn.asObservable();
-  }
+    constructor() {
+        this.auth = new Auth();
+    }
 
-  constructor() {
-    this.auth = new Auth();
-  }
+    authenticate(authDetail) {
 
-  authenticate(authDetail) {
+        this.auth.accessToken = authDetail.access_token;
+        this.auth.expiredIn = authDetail.expires_in;
+        this.auth.refreshToken = authDetail.refresh_token;
+        this.auth.authenticated = true;
 
-    this.auth.accessToken = authDetail.access_token;
-    this.auth.expiredIn = authDetail.expires_in;
-    this.auth.refreshToken = authDetail.refresh_token;
-    this.auth.authenticated = true;
+        this.loggedIn.next(true);
+    }
 
-    this.loggedIn.next(true);
-  }
 
-  isAuthenticated(): boolean {
-    return this.auth.authenticated;
-  }
+    get isLoggedIn(): Observable<boolean> {
+        return this.loggedIn.asObservable();
+    }
 
-  getAccessToken() {
-    return this.auth.accessToken;
-  }
+    isAuthenticated(): boolean {
+        return this.auth.authenticated;
+    }
+
+    getAccessToken() {
+        return this.auth.accessToken;
+    }
+
 }
 
 

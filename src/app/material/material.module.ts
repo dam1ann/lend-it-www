@@ -1,10 +1,17 @@
-import {NgModule} from "@angular/core";
+import { NgModule } from "@angular/core";
 import {
     CompatibilityModule,
-    MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
     MatChipsModule,
     MatDialogModule,
-    MatGridListModule, MatIconModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
@@ -16,13 +23,14 @@ import {
     MatSidenavModule,
     MatSliderModule,
     MatSlideToggleModule,
-    MatSnackBarModule, MatTabsModule, MatToolbarModule, MatTooltipModule,
-    MatExpansionModule,
-    MatFormFieldModule
+    MatSnackBarModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule
 } from "@angular/material";
-import {OverlayModule} from "@angular/cdk/overlay";
-import {PortalModule} from "@angular/cdk/portal";
-import {PlatformModule} from "@angular/cdk/platform";
+import { OverlayModule } from "@angular/cdk/overlay";
+import { PortalModule } from "@angular/cdk/portal";
+import { PlatformModule } from "@angular/cdk/platform";
 
 const materialModules = [
     MatAutocompleteModule,

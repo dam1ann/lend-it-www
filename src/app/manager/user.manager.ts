@@ -1,9 +1,11 @@
-import {DataFetcherService} from "../http/data_fetcher.service";
-import {UserTransformer} from "../transformer/user.transformer";
-import {APP_CONFIG, AppConfig} from "../config/app.config";
-import {AccessManager} from "./access.manager";
-import {Injectable, Injector} from "@angular/core";
-import 'rxjs';
+import { DataFetcherService } from "../http/data_fetcher.service";
+import { UserTransformer } from "../transformer/user.transformer";
+import { APP_CONFIG, AppConfig } from "../config/app.config";
+import { AccessManager } from "./access.manager";
+import { Injectable, Injector } from "@angular/core";
+import "rxjs";
+import { Observable } from "rxjs/Observable";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
 @Injectable()
 export class UserManager {
@@ -14,6 +16,20 @@ export class UserManager {
     }
 
     private user: UserInterface;
+
+    // better user
+    private observableUser= new BehaviorSubject<UserInterface>({
+        username: 'janusz',
+        email: 'janusz523@gmail.com',
+        roles: [
+            'user'
+        ]
+    });
+
+    get getUser(): Observable<UserInterface> {
+        return this.observableUser.asObservable();
+    }
+
 
     /**
      * @param loginRequested
@@ -39,6 +55,7 @@ export class UserManager {
             })
             .subscribe((user) => {
                 console.log(user);
+                this.observableUser.next(user);
                 return this.user = user;
             });
     }

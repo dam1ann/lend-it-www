@@ -1,8 +1,8 @@
-import {PreloaderService} from "./service/preloader.service";
-import {PreloaderComponent} from './preloader.component';
-import {MaterialModules} from "../../material.module";
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
+import { PreloaderService } from "./service/preloader.service";
+import { PreloaderComponent } from "./preloader.component";
+import { MaterialModules } from "../../material/material.module";
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
 
 @NgModule({
     imports: [

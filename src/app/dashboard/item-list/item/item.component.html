@@ -1,6 +1,17 @@
 <mat-card>
-  <mat-card-header>
-    <h1>{{item.name}}</h1>
-    <p>{{item.description}}</p>
-  </mat-card-header>
+	<button mat-icon-button class="moreButton">
+		<mat-icon>more_vert</mat-icon>
+	</button>
+
+	<mat-card-header class="col">
+		<mat-card-title>
+			{{item.name}}
+		</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<p>{{item.description}}</p>
+	</mat-card-content>
+	<mat-card-actions>
+		<button type="button" mat-button>Add</button>
+	</mat-card-actions>
 </mat-card>

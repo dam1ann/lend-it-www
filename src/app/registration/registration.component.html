@@ -1,106 +1,103 @@
 <div class="content">
 
-  <div class="spacer"></div>
-  <div class="spacer"></div>
+	<div class="spacer"></div>
+	<div class="spacer"></div>
 
-  <div class="container">
+	<div class="container">
 
-    <mat-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
-      <form [formGroup] = "registryGroup" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
-        <h1 class="col">Registration</h1>
-        <div class="spacer"></div>
-			<mat-form-field class="col">
-			  <input type="text"
-					 matInput
-					 formControlName="email"
-					 placeholder="E-mail"
-					 ngModel>
+		<mat-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
+			<form [formGroup]="registryGroup" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+				<h1 class="col">Registration</h1>
+				<div class="spacer"></div>
+				<mat-input-container class="col">
+					<input type="text" matInput formControlName="email" placeholder="E-mail" ngModel>
 
-				<mat-error *ngIf="registryGroup.get('email').invalid && undefined === registryGroup.get('email').getError('error')"> Błędny adres email</mat-error>
-				<mat-error *ngIf="registryGroup.get('email').getError('error')"> {{ registryGroup.get('email').getError('error') }}<div class="spacer-5"> </div></mat-error>
-			</mat-form-field>
-		<div class="spacer-5"> </div>
+					<mat-error *ngIf="registryGroup.get('email').invalid && undefined === registryGroup.get('email').getError('error')"> Błędny adres email</mat-error>
+					<mat-error *ngIf="registryGroup.get('email').getError('error')"> {{ registryGroup.get('email').getError('error') }}
+						<div class="spacer-5"></div>
+					</mat-error>
+				</mat-input-container>
+				<div class="spacer-5"></div>
 
 
+				<mat-input-container class="col">
+					<input type="password" matInput formControlName="password" placeholder="Password" ngModel>
+					<mat-error *ngIf="registryGroup.get('password').invalid && undefined === registryGroup.get('password').getError('error')"> Błędne hasło, minimalnie 6 znaków</mat-error>
+					<mat-error *ngIf="registryGroup.get('password').getError('error')"> {{ registryGroup.get('password').getError('error') }}
+						<div class="spacer-5"></div>
+					</mat-error>
+				</mat-input-container>
+				<div class="spacer-5"></div>
 
-        <mat-input-container class="col">
-          <input type="password"
-                 matInput
-				 formControlName="password"
-                 placeholder="Password"
-                 ngModel>
-			<mat-error *ngIf="registryGroup.get('password').invalid && undefined === registryGroup.get('password').getError('error')"> Błędne hasło, minimalnie 6 znaków</mat-error>
-			<mat-error *ngIf="registryGroup.get('password').getError('error')"> {{ registryGroup.get('password').getError('error') }}<div class="spacer-5"> </div></mat-error>
-		</mat-input-container>
-        <div class="spacer-5"></div>
+				<mat-input-container class="col">
+					<input type="password" matInput formControlName="passwordRepeated" placeholder="Repeat Password" ngModel>
+					<mat-error *ngIf="registryGroup.get('passwordRepeated').invalid  && undefined === registryGroup.get('passwordRepeated').getError('error')"> Błędne hasło, minimalnie 6 znaków</mat-error>
+					<mat-error *ngIf="registryGroup.get('passwordRepeated').getError('error')"> {{ registryGroup.get('passwordRepeated').getError('error') }}
+						<div class="spacer-5"></div>
+					</mat-error>
+				</mat-input-container>
+				<div class="spacer-5"></div>
 
-	    <mat-input-container class="col">
-		  <input type="password"
-                 matInput
-				 formControlName="passwordRepeated"
-				 placeholder="Repeat Password"
-				 ngModel>
-			<mat-error *ngIf="registryGroup.get('passwordRepeated').invalid  && undefined === registryGroup.get('passwordRepeated').getError('error')"> Błędne hasło, minimalnie 6 znaków</mat-error>
-			<mat-error *ngIf="registryGroup.get('passwordRepeated').getError('error')"> {{ registryGroup.get('passwordRepeated').getError('error') }}<div class="spacer-5"> </div></mat-error>
-		</mat-input-container>
-	    <div class="spacer-5"></div>
+				<mat-input-container class="col">
+					<input type="text" matInput formControlName="username" placeholder="Username" ngModel>
+					<mat-error *ngIf="registryGroup.get('username').invalid && undefined === registryGroup.get('username').getError('error')"> Błędny login, minimalnie 4 znaki</mat-error>
+					<mat-error *ngIf="registryGroup.get('username').getError('error')"> {{ registryGroup.get('username').getError('error') }}
+						<div class="spacer-5"></div>
+					</mat-error>
+				</mat-input-container>
+				<div class="spacer-5"></div>
 
-        <mat-input-container class="col">
-          <input type="text"
-                 matInput
-				 formControlName="username"
-                 placeholder="Username"
-                 ngModel>
-			<mat-error *ngIf="registryGroup.get('username').invalid && undefined === registryGroup.get('username').getError('error')"> Błędny login, minimalnie 4 znaki</mat-error>
-			<mat-error *ngIf="registryGroup.get('username').getError('error')"> {{ registryGroup.get('username').getError('error') }}<div class="spacer-5"> </div></mat-error>
-        </mat-input-container>
-        <div class="spacer-5"></div>
-
-        <!--<div class="col">-->
-          <!--<mat-select placeholder="Sex">-->
-            <!--<mat-option [value]="male" #male>-->
-              <!--Male-->
-            <!--</mat-option>-->
-            <!--<mat-option [value]="female" #female>-->
-              <!--Female-->
-            <!--</mat-option>-->
-          <!--</mat-select>-->
-        <!--</div>-->
+				<!--<div class="col">-->
+				<!--<mat-select placeholder="Sex">-->
+				<!--<mat-option [value]="male" #male>-->
+				<!--Male-->
+				<!--</mat-option>-->
+				<!--<mat-option [value]="female" #female>-->
+				<!--Female-->
+				<!--</mat-option>-->
+				<!--</mat-select>-->
+				<!--</div>-->
 
 
-        <div class="spacer"></div>
+				<div class="spacer"></div>
 
-        <div class="col row justify-content-between">
-          <mat-checkbox class="col" required>
-            Accept the <a href="#" target="_blank">terms</a> and <a href="#" target="_blank">conditions</a>
-          </mat-checkbox>
-          <div class="spacer-5"></div>
-          <mat-checkbox class="col">
-            Agree to send newsletter
-          </mat-checkbox>
+				<div class="col row justify-content-between">
+					<mat-checkbox class="col" required>
+						Accept the
+						<a href="#" target="_blank">terms</a>
+						and
+						<a href="#" target="_blank">conditions</a>
+					</mat-checkbox>
+					<div class="spacer-5"></div>
+					<mat-checkbox class="col">
+						Agree to send newsletter
+					</mat-checkbox>
 
-          <div class="spacer"></div>
+					<div class="spacer"></div>
 
 
-          <div class="col">
-            <button mat-raised-button
-                    color="accent">
-              <span>Log in</span>
-            </button>
-          </div>
-        </div>
-      </form>
+					<div class="col">
+						<button mat-raised-button color="accent">
+							<span>Log in</span>
+						</button>
+					</div>
+				</div>
+			</form>
 
-      <div class="spacer"></div>
-      <div class="spacer"></div>
+			<div class="spacer"></div>
+			<div class="spacer"></div>
 
-      <div class="col row">
-        <div class="mx-auto">
-          <span>You have an account?</span>
-          <a uiSref="login">Log in</a>
-        </div>
-      </div>
-    </mat-card>
+			<div class="col row">
+				<div class="mx-auto">
+					<span>You have an account?</span>
+					<a uiSref="login">Log in</a>
+				</div>
+			</div>
+		</mat-card>
 
-  </div>
+	</div>
+
+	<div class="spacer"></div>
 </div>
+
+<div class="spacer"></div>

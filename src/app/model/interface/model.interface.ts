@@ -1,3 +1,3 @@
-interface ModelInterface{
+interface ModelInterface {
 
 }

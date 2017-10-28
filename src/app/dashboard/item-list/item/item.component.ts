@@ -1,15 +1,14 @@
-import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'ng-item',
-  templateUrl:'./item.component.html',
-  styleUrls: ['./item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ng-item',
+    templateUrl: './item.component.html',
+    styleUrls: ['./item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ItemComponent{
-  @Input() item;
-
+export class ItemComponent {
+    @Input() item;
 
 
 }

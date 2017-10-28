@@ -1,37 +1,37 @@
-import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
-import {AppComponent} from "./app.component";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from "@angular/platform-browser";
+import { UIRouterModule } from "@uirouter/angular";
+import { AppComponent } from "./app.component";
+import { NgModule } from "@angular/core";
 
-import {DashboardModule} from "./dashboard/dashboard.module";
-import {LoginModule} from "./login/login.module";
-import {NotFoundModule} from "./404/notFound.module";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {RequestInterceptor} from "./listener/interceptor/request.interceptor";
-import {RegistrationModule} from "./registration/registration.module";
-import {APP_CONFIG, APP_CONFIGURATION} from "./config/app.config";
-import {SettingsModule} from "./settings/settings.module";
-import {HeaderModule} from "./header/header.module";
-import {UIRouterModule} from "@uirouter/angular";
-import {RoutingConfig} from "./config/routing.config";
-import {PreloaderModule} from "./core/preloader/preloader.module";
-import {PreloaderService} from "./core/preloader/service/preloader.service";
+import { RegistrationModule } from "./registration/registration.module";
+import { DashboardModule } from "./dashboard/dashboard.module";
+import { SettingsModule } from "./settings/settings.module";
+import { NotFoundModule } from "./404/notFound.module";
+import { FooterModule } from "./footer/footer.module";
+import { HeaderModule } from "./header/header.module";
+import { LoginModule } from "./login/login.module";
+import { RequestInterceptor } from "./listener/interceptor/request.interceptor";
+import { PreloaderService } from "./core/preloader/service/preloader.service";
+import { PreloaderModule } from "./core/preloader/preloader.module";
+import { APP_CONFIG, APP_CONFIGURATION } from "./config/app.config";
+import { RoutingConfig } from "./config/routing.config";
+
 
 @NgModule({
     declarations: [
         AppComponent
     ],
 
-    providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: RequestInterceptor,
-            multi: true,
-        },
-        {
-            provide: APP_CONFIG,
-            useValue: APP_CONFIGURATION,
-        },
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: RequestInterceptor,
+        multi: true,
+    }, {
+        provide: APP_CONFIG,
+        useValue: APP_CONFIGURATION,
+    },
         PreloaderService
     ],
     imports: [
@@ -40,6 +40,7 @@ import {PreloaderService} from "./core/preloader/service/preloader.service";
         BrowserAnimationsModule,
         DashboardModule,
         LoginModule,
+        FooterModule,
         NotFoundModule,
         RegistrationModule,
         SettingsModule,

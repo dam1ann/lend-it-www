@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import { InjectionToken } from "@angular/core";
 
 export let APP_CONFIG = new InjectionToken<AppConfig>('app.config');
 

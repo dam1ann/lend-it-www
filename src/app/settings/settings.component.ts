@@ -1,23 +1,20 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges} from "@angular/core";
-import {User} from "../model/user.model";
+import { Component, OnChanges } from "@angular/core";
+import { UserManager } from "../manager/user.manager";
 
 
 @Component({
-  selector: 'ng-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ng-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss']
 })
 
-export class SettingsComponent implements OnChanges{
+export class SettingsComponent {
 
-  @Input()user: User;
+    user: UserInterface;
 
-  constructor(){
-
-  }
-
-  ngOnChanges(){
-
-  }
+    constructor(private userMng: UserManager) {
+        this.userMng.getUser.subscribe(user=>{
+            this.user = user;
+        })
+    }
 }
