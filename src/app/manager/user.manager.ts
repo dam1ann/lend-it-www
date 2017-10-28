@@ -6,19 +6,21 @@ import { Injectable, Injector } from "@angular/core";
 import "rxjs";
 import { Observable } from "rxjs/Observable";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { LocalStorageService } from "angular-2-local-storage";
 
 @Injectable()
 export class UserManager {
     constructor(private accessManager: AccessManager,
                 private fetcher: DataFetcherService,
                 private transformer: UserTransformer,
-                private injector: Injector) {
+                private injector: Injector,
+                private localStorage: LocalStorageService) {
     }
 
     private user: UserInterface;
 
     // better user
-    private observableUser= new BehaviorSubject<UserInterface>({
+    private observableUser = new BehaviorSubject<UserInterface>({
         username: 'janusz',
         email: 'janusz523@gmail.com',
         roles: [

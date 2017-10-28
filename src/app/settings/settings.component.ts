@@ -1,4 +1,4 @@
-import { Component, OnChanges } from "@angular/core";
+import { Component, OnChanges, OnInit } from "@angular/core";
 import { UserManager } from "../manager/user.manager";
 
 
@@ -8,11 +8,14 @@ import { UserManager } from "../manager/user.manager";
     styleUrls: ['./settings.component.scss']
 })
 
-export class SettingsComponent {
+export class SettingsComponent implements OnInit{
 
     user: UserInterface;
 
     constructor(private userMng: UserManager) {
+    }
+
+    ngOnInit(){
         this.userMng.getUser.subscribe(user=>{
             this.user = user;
         })

@@ -7,7 +7,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class AccessManager {
     private auth;
-    private loggedIn = new BehaviorSubject<boolean>(true);
+    private loggedIn = new BehaviorSubject<boolean>(false);
 
     constructor() {
         this.auth = new Auth();
