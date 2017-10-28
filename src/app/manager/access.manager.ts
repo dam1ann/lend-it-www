@@ -1,20 +1,19 @@
-import { Injectable } from "@angular/core";
-import { Auth } from "../model/auth.model";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Observable} from "rxjs/Observable";
+import {Injectable} from "@angular/core";
+import {Auth} from "../model/auth.model";
 
 
 @Injectable()
 export class AccessManager {
     private auth;
-    private loggedIn = new BehaviorSubject<boolean>(true);
+    private loggedIn = new BehaviorSubject<boolean>(false);
 
     constructor() {
         this.auth = new Auth();
     }
 
     authenticate(authDetail) {
-
         this.auth.accessToken = authDetail.access_token;
         this.auth.expiredIn = authDetail.expires_in;
         this.auth.refreshToken = authDetail.refresh_token;
@@ -37,5 +36,3 @@ export class AccessManager {
     }
 
 }
-
-

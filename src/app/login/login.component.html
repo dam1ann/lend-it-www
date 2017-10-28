@@ -6,21 +6,33 @@
 	<div class="container">
 		<mat-card class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mx-auto">
 
-			<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+			<form [formGroup]="loginGroup" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
 				<h1 class="col">Log in</h1>
 				<div class="spacer"></div>
 				<mat-input-container class="col">
-					<input type="text" matInput name="login" placeholder="Name" ngModel>
+					<input type="text" matInput formControlName="username" placeholder="Username" ngModel>
+					<mat-error *ngIf="loginGroup.get('username')">
+						{{ loginGroup.get('username').getError('error') }}
+						<div class="spacer-5"></div>
+					</mat-error>
 				</mat-input-container>
 				<mat-input-container class="col">
-					<input type="password" matInput name="password" placeholder="Password" ngModel>
+					<input type="password" matInput formControlName="password" placeholder="Password" ngModel>
+					<mat-error *ngIf="loginGroup.get('password')">
+						{{ loginGroup.get('password').getError('error') }}
+						<div class="spacer-5"></div>
+					</mat-error>
+					<mat-error *ngIf="loginGroup.get('password').invalid && undefined === loginGroup.get('password').getError('error')">
+						Hasło jest puste
+						<div class="spacer-5"></div>
+					</mat-error>
 				</mat-input-container>
 
 				<div class="spacer"></div>
 
 				<div class="col row justify-content-between">
 					<mat-checkbox class="col">
-						Zapamiętaj mnie
+						Remember me
 					</mat-checkbox>
 					<button mat-raised-button color="accent" type="submit">
 						<span>Log in</span>

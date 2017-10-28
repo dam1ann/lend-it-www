@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { AccessManager } from "../manager/access.manager";
+import {Component, OnInit} from "@angular/core";
+import {AccessManager} from "../manager/access.manager";
 
 @Component({
     selector: 'ng-header',
@@ -15,9 +15,8 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
-        this.accessMng.isLoggedIn.subscribe(next => {
-            this.loggedIn = next;
+        this.accessMng.isLoggedIn.subscribe(logged => {
+            this.loggedIn = logged;
         });
     }
 }

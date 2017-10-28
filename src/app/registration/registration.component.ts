@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { UserManager } from "../manager/user.manager";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserManager} from "../manager/user.manager";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
     selector: 'ng-registration',
@@ -11,8 +11,6 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 export class RegistrationComponent implements OnInit {
     constructor(private userManager: UserManager) {
     }
-
-    errors: Object = {};
 
     registryGroup: FormGroup;
 
@@ -35,27 +33,6 @@ export class RegistrationComponent implements OnInit {
             'email': this.registryGroup.get('email').value
         };
 
-
-        let response = this.userManager.registry(registryData);
-        response.subscribe(
-            response => alert('REGISTRED!'),
-            errors => {
-                this.populateErrors(JSON.parse(errors.error));
-
-                return this.errors;
-            }
-        );
-    }
-
-    populateErrors(data): void {
-        for (let prop in data) {
-            if (true === Array.isArray(data[prop])) {
-                this.registryGroup.get(prop).setErrors({'error': data[prop]});
-            }
-            if (prop === 'password' || prop === 'passwordRepeated') {
-                this.registryGroup.get('passwordRepeated').setErrors({'error': data[prop].first});
-            }
-        }
-
+        this.userManager.registry(registryData, this.registryGroup);
     }
 }

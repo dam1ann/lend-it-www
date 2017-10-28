@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
-import { UserManager } from "../manager/user.manager";
-import { NgForm } from "@angular/forms";
+import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {UserManager} from "../manager/user.manager";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
     selector: 'ng-login',
@@ -8,16 +8,25 @@ import { NgForm } from "@angular/forms";
     styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
     constructor(private userManager: UserManager) {
     }
 
-    onSubmit(data: NgForm) {
-        const login = data.value.login;
-        const password = data.value.password;
+    loginGroup: FormGroup;
 
-        this.userManager.authenticate({login, password});
+    ngOnInit() {
+        this.loginGroup = new FormGroup({
+            username: new FormControl('', [Validators.required]),
+            password: new FormControl('', [Validators.required]),
+        });
+    }
+
+    onSubmit() {
+        const username = this.loginGroup.get('username').value;
+        const password = this.loginGroup.get('password').value;
+
+        this.userManager.authenticate({username, password}, this.loginGroup)
     }
 
 }

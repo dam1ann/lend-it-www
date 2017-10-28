@@ -1,14 +1,14 @@
-import { Injector } from "@angular/core";
-import { Transition, UIRouter } from "@uirouter/core/lib";
-import { Ng2StateDeclaration } from "@uirouter/angular";
+import {Injector} from "@angular/core";
+import {Transition, UIRouter} from "@uirouter/core/lib";
+import {Ng2StateDeclaration} from "@uirouter/angular";
 
-import { PreloaderService } from "../core/preloader/service/preloader.service";
-import { RegistrationComponent } from "../registration/registration.component";
-import { DashboardComponent } from "../dashboard/dashboard.component";
-import { SettingsComponent } from "../settings/settings.component";
-import { LoginComponent } from "../login/login.component";
-import { AccessManager } from "../manager/access.manager";
-import { Observable } from "rxjs/Observable";
+import {PreloaderService} from "../core/preloader/service/preloader.service";
+import {RegistrationComponent} from "../registration/registration.component";
+import {DashboardComponent} from "../dashboard/dashboard.component";
+import {SettingsComponent} from "../settings/settings.component";
+import {LoginComponent} from "../login/login.component";
+import {AccessManager} from "../manager/access.manager";
+import {Observable} from "rxjs/Observable";
 
 
 export class RoutingConfig {
@@ -49,7 +49,9 @@ export class RoutingConfig {
 
         router.transitionService.onBefore({to: 'login'}, (transition: Transition) => {
             let Logged: boolean = false;
-            authMng.isLoggedIn.subscribe(logged => Logged = logged);
+            authMng.isLoggedIn.subscribe(logged => {
+                Logged = logged
+            });
 
 
             if (Logged) {
@@ -60,7 +62,9 @@ export class RoutingConfig {
 
         router.transitionService.onBefore({to: 'settings'}, (transition: Transition) => {
             let Logged: boolean = false;
-            authMng.isLoggedIn.subscribe(logged => Logged = logged);
+            authMng.isLoggedIn.subscribe(logged => {
+                Logged = logged
+            });
 
             if (!Logged) {
                 return router.stateService.target('dashboard');
