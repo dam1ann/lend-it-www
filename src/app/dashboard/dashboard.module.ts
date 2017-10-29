@@ -1,13 +1,14 @@
-import { NgModule } from "@angular/core";
-import { MaterialModules } from "../material/material.module";
-import { DashboardComponent } from "./dashboard.component";
-import { UIRouterModule } from "@uirouter/angular";
-import { SettingsModule } from "../settings/settings.module";
-import { ItemListComponent } from "./item-list/item-list.component";
-import { NavigationComponent } from "./navigation/navigation.component";
-import { ItemComponent } from "./item-list/item/item.component";
-import { CommonModule } from "@angular/common";
-import { FilterComponent } from "./filter/filter.component";
+import {NavigationComponent} from "./navigation/navigation.component";
+import {ItemListComponent} from "./item-list/item-list.component";
+import {ItemComponent} from "./item-list/item/item.component";
+import {MaterialModules} from "../material/material.module";
+import {UserEvents} from "../core/events/user-events.service";
+import {SettingsModule} from "../settings/settings.module";
+import {DashboardComponent} from "./dashboard.component";
+import {FilterComponent} from "./filter/filter.component";
+import {UIRouterModule} from "@uirouter/angular";
+import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,9 @@ import { FilterComponent } from "./filter/filter.component";
         UIRouterModule,
         CommonModule
     ],
-    providers: [],
+    providers: [
+        UserEvents
+    ],
     exports: [DashboardComponent]
 })
 

@@ -1,33 +1,30 @@
-import { DataFetcherService } from "../http/data_fetcher.service";
-import { UserTransformer } from "../transformer/user.transformer";
-import { APP_CONFIG, AppConfig } from "../config/app.config";
-import { AccessManager } from "./access.manager";
-import { Injectable, Injector } from "@angular/core";
-import "rxjs";
-import {Observable} from "rxjs/Observable";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {FormGroup} from "@angular/forms";
+import {DataFetcherService} from "../http/data_fetcher.service";
+import {UserTransformer} from "../transformer/user.transformer";
+import {UserEvents} from "../core/events/user-events.service";
+import {APP_CONFIG, AppConfig} from "../config/app.config";
+import {Injectable, Injector} from "@angular/core";
 import {StateService} from "@uirouter/core/lib";
+import {AccessManager} from "./access.manager";
+import {FormGroup} from "@angular/forms";
+import "rxjs";
 
 @Injectable()
 export class UserManager {
+    /**
+     * @param {AccessManager} accessManager
+     * @param {DataFetcherService} fetcher
+     * @param {UserTransformer} transformer
+     * @param {Injector} injector
+     * @param {StateService} stateService
+     * @param {UserEvents} userEvents
+     */
     constructor(private accessManager: AccessManager,
                 private fetcher: DataFetcherService,
                 private transformer: UserTransformer,
                 private injector: Injector,
-                private stateService: StateService) {
+                private stateService: StateService,
+                private userEvents: UserEvents) {
     }
-
-    private observableUser = new BehaviorSubject<UserInterface>({
-        'username': '',
-        'email': '',
-        'roles': []
-    });
-
-    get getUser(): Observable<UserInterface> {
-        return this.observableUser.asObservable();
-    }
-
 
     /**
      * @param loginRequested
@@ -49,12 +46,15 @@ export class UserManager {
         return this.fetcher.POST(config.auth_url, requestData)
             .map((response: Response) => this.accessManager.authenticate(response))
             .flatMap(() => this.fetcher.POST(config.urls.me))
-            .map((userDetail) => {
+            .map(userDetail => {
                 return this.transformer.transform(userDetail);
             })
             .subscribe((user: UserInterface) => {
-                    this.observableUser.next(user);
-                    this.stateService.go('dashboard')
+                    this.stateService.go('dashboard');
+
+                    this.userEvents.getUser.next(user);
+                    this.userEvents.successLogged.next("Pomyślnie zalogowano użytkownika");
+                    this.userEvents.successLogged.complete();
                 },
                 errors => {
                     loginGroup.get('password').setErrors({'error': errors.error.error_description});
@@ -74,9 +74,10 @@ export class UserManager {
         let config: AppConfig = this.injector.get(APP_CONFIG);
 
         return this.fetcher.POST(config.urls.registry, requestData)
-            .subscribe(
-                response => {
+            .subscribe(() => {
                     this.stateService.go('login');
+                    this.userEvents.successRegistered.next("Pomyślnie zarejestrowano użytkownika");
+                    this.userEvents.successRegistered.complete();
                 },
                 errors => {
                     UserManager.populateErrors(errors.error, registryGroup);

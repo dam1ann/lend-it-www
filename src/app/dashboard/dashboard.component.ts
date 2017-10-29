@@ -1,15 +1,22 @@
-import {AccessManager} from "../manager/access.manager";
-import {Component, OnInit} from "@angular/core";
+import {ChangeDetectionStrategy, Component, OnInit} from "@angular/core";
+import {UserEvents} from "../core/events/user-events.service";
+import {MatSnackBar} from "@angular/material";
 
 @Component({
     selector: 'ng-dashboard',
     templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss']
+    styleUrls: ['./dashboard.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class DashboardComponent implements OnInit {
 
-    constructor(private accessManager: AccessManager) {
+    /**
+     * @param {UserEvents} userEvents
+     * @param {MatSnackBar} snackBar
+     */
+    constructor(private userEvents: UserEvents,
+                private snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -17,10 +24,13 @@ export class DashboardComponent implements OnInit {
     }
 
     successLogged() {
-        this.accessManager.isLoggedIn.subscribe(logged => {
-            if (logged) {
-                alert("Gratki, zalogowałeś się!")
-            }
-        })
+        this.userEvents.successLogged.subscribe(message => {
+            this.snackBar.open(String(message), "", {
+                duration: 3000,
+                horizontalPosition: "center",
+                verticalPosition: "top",
+                extraClasses: ['custom-snack-bar']
+            });
+        });
     }
 }

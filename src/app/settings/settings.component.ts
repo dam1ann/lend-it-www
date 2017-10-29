@@ -1,5 +1,5 @@
-import { Component, OnChanges, OnInit } from "@angular/core";
-import { UserManager } from "../manager/user.manager";
+import {UserEvents} from "../core/events/user-events.service";
+import {Component, OnInit} from "@angular/core";
 
 
 @Component({
@@ -8,16 +8,14 @@ import { UserManager } from "../manager/user.manager";
     styleUrls: ['./settings.component.scss']
 })
 
-export class SettingsComponent implements OnInit{
+export class SettingsComponent implements OnInit {
 
     user: UserInterface;
 
-    constructor(private userMng: UserManager) {
+    constructor(private userEvents: UserEvents) {
     }
 
-    ngOnInit(){
-        this.userMng.getUser.subscribe(user=>{
-            this.user = user;
-        })
+    ngOnInit() {
+        this.userEvents.getUser.subscribe(user => this.user = user);
     }
 }
