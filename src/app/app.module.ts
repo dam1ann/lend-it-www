@@ -17,7 +17,8 @@ import { PreloaderService } from "./core/preloader/service/preloader.service";
 import { PreloaderModule } from "./core/preloader/preloader.module";
 import { APP_CONFIG, APP_CONFIGURATION } from "./config/app.config";
 import { RoutingConfig } from "./config/routing.config";
-
+import { LocalStorageModule} from "angular-2-local-storage";
+import { MyLocalStorageService } from "./core/local-storage/localStorage.service";
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { RoutingConfig } from "./config/routing.config";
         provide: APP_CONFIG,
         useValue: APP_CONFIGURATION,
     },
-        PreloaderService
+        PreloaderService,
+        MyLocalStorageService
     ],
     imports: [
         PreloaderModule,
@@ -51,6 +53,10 @@ import { RoutingConfig } from "./config/routing.config";
             states: RoutingConfig.mainStates(),
             useHash: false,
             config: RoutingConfig.config
+        }),
+        LocalStorageModule.withConfig({
+            prefix: 'lendIt',
+            storageType: 'localStorage'
         })
     ],
     bootstrap: [AppComponent],
@@ -59,8 +65,6 @@ import { RoutingConfig } from "./config/routing.config";
     ]
 })
 export class AppModule {
-
-
 }
 
 

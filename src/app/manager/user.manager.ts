@@ -1,12 +1,13 @@
-import {DataFetcherService} from "../http/data_fetcher.service";
-import {UserTransformer} from "../transformer/user.transformer";
-import {UserEvents} from "../core/events/user-events.service";
-import {APP_CONFIG, AppConfig} from "../config/app.config";
-import {Injectable, Injector} from "@angular/core";
-import {StateService} from "@uirouter/core/lib";
-import {AccessManager} from "./access.manager";
-import {FormGroup} from "@angular/forms";
+import { DataFetcherService } from "../http/data_fetcher.service";
+import { UserTransformer } from "../transformer/user.transformer";
+import { UserEvents } from "../core/events/user-events.service";
+import { APP_CONFIG, AppConfig } from "../config/app.config";
+import { Injectable, Injector } from "@angular/core";
+import { StateService } from "@uirouter/core/lib";
+import { AccessManager } from "./access.manager";
+import { FormGroup } from "@angular/forms";
 import "rxjs";
+import { MyLocalStorageService } from "../core/local-storage/localStorage.service";
 
 @Injectable()
 export class UserManager {
@@ -23,7 +24,9 @@ export class UserManager {
                 private transformer: UserTransformer,
                 private injector: Injector,
                 private stateService: StateService,
-                private userEvents: UserEvents) {
+                private userEvents: UserEvents,
+                private localStorage: MyLocalStorageService) {
+
     }
 
     /**
@@ -55,6 +58,7 @@ export class UserManager {
                     this.userEvents.getUser.next(user);
                     this.userEvents.successLogged.next("Pomyślnie zalogowano użytkownika");
                     this.userEvents.successLogged.complete();
+                    this.localStorage.saveUser(user);
                 },
                 errors => {
                     loginGroup.get('password').setErrors({'error': errors.error.error_description});
