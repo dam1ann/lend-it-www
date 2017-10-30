@@ -1,13 +1,13 @@
-import { DataFetcherService } from "../http/data_fetcher.service";
-import { UserTransformer } from "../transformer/user.transformer";
-import { UserEvents } from "../core/events/user-events.service";
-import { APP_CONFIG, AppConfig } from "../config/app.config";
-import { Injectable, Injector } from "@angular/core";
-import { StateService } from "@uirouter/core/lib";
-import { AccessManager } from "./access.manager";
-import { FormGroup } from "@angular/forms";
+import {DataFetcherService} from "../http/data_fetcher.service";
+import {UserTransformer} from "../transformer/user.transformer";
+import {UserEvents} from "../core/events/user-events.service";
+import {APP_CONFIG, AppConfig} from "../config/app.config";
+import {Injectable, Injector} from "@angular/core";
+import {StateService} from "@uirouter/core/lib";
+import {AccessManager} from "./access.manager";
+import {FormGroup} from "@angular/forms";
 import "rxjs";
-import { MyLocalStorageService } from "../core/local-storage/localStorage.service";
+import {MyLocalStorageService} from "../core/local-storage/localStorage.service";
 
 @Injectable()
 export class UserManager {
@@ -18,6 +18,7 @@ export class UserManager {
      * @param {Injector} injector
      * @param {StateService} stateService
      * @param {UserEvents} userEvents
+     * @param {MyLocalStorageService} localStorage
      */
     constructor(private accessManager: AccessManager,
                 private fetcher: DataFetcherService,
@@ -53,12 +54,9 @@ export class UserManager {
                 return this.transformer.transform(userDetail);
             })
             .subscribe((user: UserInterface) => {
-                    this.stateService.go('dashboard');
-
                     this.userEvents.getUser.next(user);
-                    this.userEvents.successLogged.next("Pomyślnie zalogowano użytkownika");
-                    this.userEvents.successLogged.complete();
                     this.localStorage.saveUser(user);
+                    this.stateService.go('dashboard', {message: 'Pomyślnie zalogowano użytkownika'});
                 },
                 errors => {
                     loginGroup.get('password').setErrors({'error': errors.error.error_description});
@@ -78,11 +76,9 @@ export class UserManager {
         let config: AppConfig = this.injector.get(APP_CONFIG);
 
         return this.fetcher.POST(config.urls.registry, requestData)
-            .subscribe(() => {
-                    this.stateService.go('login');
-                    this.userEvents.successRegistered.next("Pomyślnie zarejestrowano użytkownika");
-                    this.userEvents.successRegistered.complete();
-                },
+            .subscribe(() =>
+                    this.stateService.go('login', {message: "Pomyślnie zarejestrowano użytkownika"})
+                ,
                 errors => {
                     UserManager.populateErrors(errors.error, registryGroup);
 
