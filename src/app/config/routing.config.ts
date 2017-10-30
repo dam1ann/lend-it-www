@@ -1,14 +1,15 @@
-import {Injector} from "@angular/core";
-import {Transition, UIRouter} from "@uirouter/core/lib";
-import {Ng2StateDeclaration} from "@uirouter/angular";
-
+import {RoutingAccessDeniedRedirect} from "../core/listener/routing/routing.access-denied-redirect";
+import {RoutingHookInterface} from "../core/listener/routing/routing.hook.interface";
 import {PreloaderService} from "../core/preloader/service/preloader.service";
 import {RegistrationComponent} from "../registration/registration.component";
+import {RoutingRedirect} from "../core/listener/routing/routing.redirect";
+import {RoutingMessage} from "../core/listener/routing/routing.message";
 import {DashboardComponent} from "../dashboard/dashboard.component";
 import {SettingsComponent} from "../settings/settings.component";
+import {Transition, UIRouter} from "@uirouter/core/lib";
 import {LoginComponent} from "../login/login.component";
-import {AccessManager} from "../manager/access.manager";
-import {MatSnackBar} from "@angular/material";
+import {Ng2StateDeclaration} from "@uirouter/angular";
+import {Injector} from "@angular/core";
 
 export class RoutingConfig {
 
@@ -27,51 +28,26 @@ export class RoutingConfig {
      */
     static config(router: UIRouter, injector: Injector) {
         const preloader: PreloaderService = injector.get(PreloaderService),
-            authMng: AccessManager = injector.get(AccessManager),
-            snackBar: MatSnackBar = injector.get(MatSnackBar)
+            routingMessage: RoutingHookInterface = injector.get(RoutingMessage),
+            routingRedirect: RoutingHookInterface = injector.get(RoutingRedirect),
+            routingAccessDeniedRedirect: RoutingHookInterface = injector.get(RoutingAccessDeniedRedirect)
         ;
 
-        router.transitionService.onBefore({to: 'login'}, (transition: Transition) => {
-            let Logged: boolean = false;
-            authMng.isLoggedIn.subscribe(logged => {
-                Logged = logged
-            });
+        router.transitionService.onBefore({to: (state) => state.name === 'registration' || state.name === 'login'},
+            (transition: Transition) => routingRedirect.handle(transition)
+        );
+
+        router.transitionService.onBefore({to: 'settings'},
+            (transition: Transition) => routingAccessDeniedRedirect.handle(transition)
+        );
 
 
-            if (Logged) {
-                return router.stateService.target('dashboard');
-            }
-            return !Logged;
-        });
+        router.transitionService.onStart({}, () => preloader.start());
 
-        router.transitionService.onBefore({to: 'settings'}, (transition: Transition) => {
-            let Logged: boolean = false;
-            authMng.isLoggedIn.subscribe(logged => {
-                Logged = logged
-            });
-
-            if (!Logged) {
-                return router.stateService.target('dashboard');
-            }
-            return Logged;
-        });
-
-        router.transitionService.onStart({}, (transition: Transition) => {
-            preloader.start();
-        });
 
         router.transitionService.onSuccess({}, (transition: Transition) => {
+            routingMessage.handle(transition);
             preloader.stop();
-
-            const message = transition.params().message;
-            if (null != message) {
-                snackBar.open(String(message), "", {
-                    duration: 3000,
-                    horizontalPosition: "center",
-                    verticalPosition: "top",
-                    extraClasses: ['custom-snack-bar']
-                });
-            }
         });
     }
 

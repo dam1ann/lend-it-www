@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { AccessManager } from "../manager/access.manager";
-import { StateService } from "@uirouter/core/lib";
+import {Component, OnInit} from "@angular/core";
+import {AccessManager} from "../manager/access.manager";
+import {StateService} from "@uirouter/core/lib";
 
 @Component({
     selector: 'ng-header',
@@ -22,6 +22,6 @@ export class HeaderComponent implements OnInit {
 
     logout() {
         this.accessMng.isLoggedIn.next(false);
-        this.stateService.go('dashboard');
+        this.stateService.go('dashboard', {message: "Pomyślnie wylogowano"});
     }
 }
