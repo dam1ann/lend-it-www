@@ -3,6 +3,7 @@ import { HeaderComponent } from "./header.component";
 import { MaterialModules } from "../material/material.module";
 import { UIRouterModule } from "@uirouter/angular";
 import { AccessManager } from "../manager/access.manager";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -10,6 +11,8 @@ import { AccessManager } from "../manager/access.manager";
     ],
     imports: [
         MaterialModules,
+        UIRouterModule,
+        CommonModule,
         UIRouterModule
     ],
     exports: [

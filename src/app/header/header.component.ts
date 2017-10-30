@@ -1,5 +1,6 @@
-import {Component, OnInit} from "@angular/core";
-import {AccessManager} from "../manager/access.manager";
+import { Component, OnInit } from "@angular/core";
+import { AccessManager } from "../manager/access.manager";
+import { StateService } from "@uirouter/core/lib";
 
 @Component({
     selector: 'ng-header',
@@ -9,14 +10,18 @@ import {AccessManager} from "../manager/access.manager";
 
 export class HeaderComponent implements OnInit {
 
-    loggedIn: boolean;
+    data = this.accessMng.isLoggedIn;
 
-    constructor(private accessMng: AccessManager) {
+    constructor(private accessMng: AccessManager,
+                private stateService: StateService) {
     }
 
     ngOnInit(): void {
-        this.accessMng.isLoggedIn.subscribe(logged => {
-            this.loggedIn = logged;
-        });
+        this.accessMng.isLoggedIn.subscribe();
+    }
+
+    logout() {
+        this.accessMng.isLoggedIn.next(false);
+        this.stateService.go('dashboard');
     }
 }

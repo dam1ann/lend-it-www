@@ -1,5 +1,4 @@
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 import { MyLocalStorageService } from "../core/local-storage/localStorage.service";
 import { Auth } from "../model/auth.model";
@@ -9,6 +8,14 @@ import { Auth } from "../model/auth.model";
 export class AccessManager {
     private auth;
     private loggedIn = new BehaviorSubject<boolean>(false);
+
+    get isLoggedIn() {
+        if(this.loggedIn.getValue()){
+            this.localStorage.clean();
+        }
+
+        return this.loggedIn;
+    }
 
     constructor(private localStorage: MyLocalStorageService) {
         this.auth = new Auth();
@@ -32,11 +39,6 @@ export class AccessManager {
         this.localStorage.saveAuthDetails(this.auth);
         this.loggedIn.next(true);
     }
-
-    get isLoggedIn(): Observable<boolean> {
-        return this.loggedIn.asObservable();
-    }
-
 
     isAuthenticated(): boolean {
         return this.auth.authenticated;
