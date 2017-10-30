@@ -14,21 +14,21 @@
 				</mat-panel-description>
 			</mat-expansion-panel-header>
 			<mat-list>
-				<mat-list-item class="row">
+				<mat-list-item>
 					<p class="col-4">login</p>
-					<p class="col-6">{{(user|async)?.username}}</p>
+					<p contenteditable>{{(user|async)?.username}}</p>
 				</mat-list-item>
-				<mat-list-item class="row">
+				<mat-list-item>
 					<p class="col-4">password</p>
-					<p class="col-6">*********</p>
+					<p contenteditable>*********</p>
 				</mat-list-item>
-				<mat-list-item class="row">
+				<mat-list-item>
 					<p class="col-4">email</p>
-					<p class="col-6">{{(user| async)?.email}}</p>
+					<p>{{(user| async)?.email}}</p>
 				</mat-list-item>
-				<mat-list-item class="row">
+				<mat-list-item>
 					<p class="col-4">picture</p>
-					<p class="col-6"></p>
+					<p></p>
 				</mat-list-item>
 			</mat-list>
 		</mat-expansion-panel>

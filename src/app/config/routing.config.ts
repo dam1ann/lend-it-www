@@ -10,6 +10,7 @@ import {Transition, UIRouter} from "@uirouter/core/lib";
 import {LoginComponent} from "../login/login.component";
 import {Ng2StateDeclaration} from "@uirouter/angular";
 import {Injector} from "@angular/core";
+import { CartComponent } from "../cart/cart.component";
 
 export class RoutingConfig {
 
@@ -96,6 +97,13 @@ export class RoutingConfig {
                     message: null
                 },
                 component: SettingsComponent
+            },{
+                name: 'cart',
+                url: '/cart',
+                params: {
+                    message: null
+                },
+                component: CartComponent
             }
         ];
     }

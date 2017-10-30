@@ -22,6 +22,7 @@ import {MyLocalStorageService} from "./core/local-storage/localStorage.service";
 import {RoutingMessage} from "./core/listener/routing/routing.message";
 import {RoutingAccessDeniedRedirect} from "./core/listener/routing/routing.access-denied-redirect";
 import {RoutingRedirect} from "./core/listener/routing/routing.redirect";
+import { CartModule } from "./cart/cart.module";
 
 @NgModule({
     declarations: [
@@ -54,6 +55,7 @@ import {RoutingRedirect} from "./core/listener/routing/routing.redirect";
         SettingsModule,
         HttpClientModule,
         HeaderModule,
+        CartModule,
         UIRouterModule.forRoot({
             otherwise: '/',
             states: RoutingConfig.mainStates(),

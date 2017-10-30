@@ -1,12 +1,12 @@
-import {DataFetcherService} from "../http/data_fetcher.service";
-import {UserTransformer} from "../transformer/user.transformer";
-import {APP_CONFIG, AppConfig} from "../config/app.config";
-import {Injectable, Injector} from "@angular/core";
-import {StateService} from "@uirouter/core/lib";
-import {AccessManager} from "./access.manager";
-import {FormGroup} from "@angular/forms";
+import { DataFetcherService } from "../http/data_fetcher.service";
+import { UserTransformer } from "../transformer/user.transformer";
+import { APP_CONFIG, AppConfig } from "../config/app.config";
+import { Injectable, Injector } from "@angular/core";
+import { StateService } from "@uirouter/core/lib";
+import { AccessManager } from "./access.manager";
+import { FormGroup } from "@angular/forms";
 import "rxjs";
-import {MyLocalStorageService} from "../core/local-storage/localStorage.service";
+import { MyLocalStorageService } from "../core/local-storage/localStorage.service";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
 @Injectable()
@@ -38,7 +38,7 @@ export class UserManager {
                 private stateService: StateService,
                 private localStorage: MyLocalStorageService) {
 
-        if(this.accessManager.isLoggedIn){
+        if (this.accessManager.isLoggedIn) {
             this.observableUser.next(this.localStorage.getUser())
         }
     }

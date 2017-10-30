@@ -1,6 +1,6 @@
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserManager} from "../manager/user.manager";
-import {Component, OnInit} from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { UserManager } from "../manager/user.manager";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
     selector: 'ng-registration',

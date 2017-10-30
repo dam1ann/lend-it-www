@@ -14,7 +14,7 @@ export class UserTransformer implements UserTransformerInterface {
         return user;
     }
 
-    transformFromLocalStorage(object): UserInterface{
+    transformFromLocalStorage(object): UserInterface {
         const user = new User();
 
         user.username = object._username;

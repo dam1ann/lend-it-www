@@ -7,16 +7,17 @@
 
 	</div>
 
+	<!-- After login -->
 	<div [hidden]="!(data|async)" class="account_settings">
 
 		<!-- Icons -->
 		<button type="button" mat-icon-button>
 			<mat-icon>search</mat-icon>
 		</button>
-		<button type="button" mat-icon-button>
+		<button type="button" mat-icon-button uiSref="cart">
 			<mat-icon>shopping_cart</mat-icon>
 		</button>
-		<button type="button" mat-icon-button>
+		<button type="button" mat-icon-button uiSref="settings">
 			<mat-icon>person</mat-icon>
 		</button>
 		<button type="button" mat-icon-button [matMenuTriggerFor]="menu">
@@ -45,6 +46,7 @@
 
 	</div>
 
+	<!-- Before login -->
 	<div [hidden]=" data|async" class="account_settings">
 
 		<button type="button" uiSref="login" mat-button>
@@ -65,20 +67,3 @@
 	<button type="button" mat-button uiSref="settings">Settings</button>
 </mat-toolbar>
 -->
-
-<!--
-<mat-toolbar class="row col">
-  <div class="col-3 mx-auto">
-    <button type="button" md-button color="accent">
-      <span>Books</span>
-    </button>
-    <button type="button" md-button>
-      <span>Games</span>
-    </button>
-    <button type="button" md-button>
-      <span>Music</span>
-    </button>
-  </div>
-</mat-toolbar>
--->
-
