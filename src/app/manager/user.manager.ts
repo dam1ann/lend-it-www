@@ -1,6 +1,5 @@
 import {DataFetcherService} from "../http/data_fetcher.service";
 import {UserTransformer} from "../transformer/user.transformer";
-import {UserEvents} from "../core/events/user-events.service";
 import {APP_CONFIG, AppConfig} from "../config/app.config";
 import {Injectable, Injector} from "@angular/core";
 import {StateService} from "@uirouter/core/lib";
@@ -8,16 +7,28 @@ import {AccessManager} from "./access.manager";
 import {FormGroup} from "@angular/forms";
 import "rxjs";
 import {MyLocalStorageService} from "../core/local-storage/localStorage.service";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
 @Injectable()
 export class UserManager {
+
+    private observableUser = new BehaviorSubject<UserInterface>({
+        'username': '',
+        'email': '',
+        'roles': []
+    });
+
+
+    get getUser(): BehaviorSubject<UserInterface> {
+        return this.observableUser;
+    }
+
     /**
      * @param {AccessManager} accessManager
      * @param {DataFetcherService} fetcher
      * @param {UserTransformer} transformer
      * @param {Injector} injector
      * @param {StateService} stateService
-     * @param {UserEvents} userEvents
      * @param {MyLocalStorageService} localStorage
      */
     constructor(private accessManager: AccessManager,
@@ -25,9 +36,11 @@ export class UserManager {
                 private transformer: UserTransformer,
                 private injector: Injector,
                 private stateService: StateService,
-                private userEvents: UserEvents,
                 private localStorage: MyLocalStorageService) {
 
+        if(this.accessManager.isLoggedIn){
+            this.observableUser.next(this.localStorage.getUser())
+        }
     }
 
     /**
@@ -54,7 +67,7 @@ export class UserManager {
                 return this.transformer.transform(userDetail);
             })
             .subscribe((user: UserInterface) => {
-                    this.userEvents.getUser.next(user);
+                    this.getUser.next(user);
                     this.localStorage.saveUser(user);
                     this.stateService.go('dashboard', {message: 'Pomyślnie zalogowano użytkownika'});
                 },

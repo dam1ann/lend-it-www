@@ -16,7 +16,7 @@
 			<mat-list>
 				<mat-list-item class="row">
 					<p class="col-4">login</p>
-					<p class="col-6">{{user?.username}}</p>
+					<p class="col-6">{{(user|async)?.username}}</p>
 				</mat-list-item>
 				<mat-list-item class="row">
 					<p class="col-4">password</p>
@@ -24,7 +24,7 @@
 				</mat-list-item>
 				<mat-list-item class="row">
 					<p class="col-4">email</p>
-					<p class="col-6">{{user?.email}}</p>
+					<p class="col-6">{{(user| async)?.email}}</p>
 				</mat-list-item>
 				<mat-list-item class="row">
 					<p class="col-4">picture</p>

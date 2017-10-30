@@ -9,10 +9,13 @@ export class AccessManager {
     private auth;
     private loggedIn = new BehaviorSubject<boolean>(false);
 
+
     get isLoggedIn() {
-        if(this.loggedIn.getValue()){
-            this.localStorage.clean();
-        }
+        this.loggedIn.subscribe(logged => {
+            if (!logged) {
+                this.localStorage.clean();
+            }
+        });
 
         return this.loggedIn;
     }
