@@ -1,6 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {AccessManager} from "../manager/access.manager";
-import {StateService} from "@uirouter/core/lib";
+import { AfterViewInit, Component, ElementRef, OnInit } from "@angular/core";
+import { AccessManager } from "../manager/access.manager";
+import { StateService } from "@uirouter/core/lib";
+import { Observable } from "rxjs/Rx";
 
 @Component({
     selector: 'ng-header',
@@ -8,20 +9,35 @@ import {StateService} from "@uirouter/core/lib";
     styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
     data = this.accessMng.isLoggedIn;
 
     constructor(private accessMng: AccessManager,
-                private stateService: StateService) {
+                private stateService: StateService,
+                private elRef: ElementRef) {
+    }
+
+    logout() {
+        this.accessMng.isLoggedIn.next(false);
+        this.stateService.go('dashboard', {message: "Pomyślnie wylogowano"});
     }
 
     ngOnInit(): void {
         this.accessMng.isLoggedIn.subscribe();
     }
 
-    logout() {
-        this.accessMng.isLoggedIn.next(false);
-        this.stateService.go('dashboard', {message: "Pomyślnie wylogowano"});
+    ngAfterViewInit() {
+        let header = this.elRef.nativeElement.querySelector('.header').classList,
+            source = Observable.fromEvent(document, 'scroll');
+
+        source.map(() => window.scrollY)
+            .subscribe(scrollY => {
+                if (scrollY > 56) {
+                    header.add('small');
+                } else{
+                    header.remove('small');
+                }
+            });
     }
 }
