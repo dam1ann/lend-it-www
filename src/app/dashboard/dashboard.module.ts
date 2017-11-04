@@ -8,6 +8,9 @@ import { FilterComponent } from "./filter/filter.component";
 import { UIRouterModule } from "@uirouter/angular";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { MockProduct } from "../mockBackend/mockProducts.service";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -21,9 +24,13 @@ import { NgModule } from "@angular/core";
         MaterialModules,
         SettingsModule,
         UIRouterModule,
-        CommonModule
+        CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule
     ],
-    providers: [],
+    providers: [
+        MockProduct
+    ],
     exports: [DashboardComponent]
 })
 

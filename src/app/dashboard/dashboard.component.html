@@ -14,8 +14,6 @@
 	</div>
 
 	<div class="container">
-		<ng-item-list class="col"></ng-item-list>
+		<ng-item-list class="col" [items]="movies| async"></ng-item-list>
 	</div>
-
-
 </mat-sidenav-container>

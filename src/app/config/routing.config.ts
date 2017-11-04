@@ -1,16 +1,17 @@
-import {RoutingAccessDeniedRedirect} from "../core/listener/routing/routing.access-denied-redirect";
-import {RoutingHookInterface} from "../core/listener/routing/routing.hook.interface";
-import {PreloaderService} from "../core/preloader/service/preloader.service";
-import {RegistrationComponent} from "../registration/registration.component";
-import {RoutingRedirect} from "../core/listener/routing/routing.redirect";
-import {RoutingMessage} from "../core/listener/routing/routing.message";
-import {DashboardComponent} from "../dashboard/dashboard.component";
-import {SettingsComponent} from "../settings/settings.component";
-import {Transition, UIRouter} from "@uirouter/core/lib";
-import {LoginComponent} from "../login/login.component";
-import {Ng2StateDeclaration} from "@uirouter/angular";
-import {Injector} from "@angular/core";
+import { RoutingAccessDeniedRedirect } from "../core/listener/routing/routing.access-denied-redirect";
+import { RoutingHookInterface } from "../core/listener/routing/routing.hook.interface";
+import { PreloaderService } from "../core/preloader/service/preloader.service";
+import { RegistrationComponent } from "../registration/registration.component";
+import { RoutingRedirect } from "../core/listener/routing/routing.redirect";
+import { RoutingMessage } from "../core/listener/routing/routing.message";
+import { DashboardComponent } from "../dashboard/dashboard.component";
+import { SettingsComponent } from "../settings/settings.component";
+import { Transition, UIRouter } from "@uirouter/core/lib";
+import { LoginComponent } from "../login/login.component";
+import { Ng2StateDeclaration } from "@uirouter/angular";
+import { Injector } from "@angular/core";
 import { CartComponent } from "../cart/cart.component";
+import { ProductComponent } from "../product/product.component";
 
 export class RoutingConfig {
 
@@ -28,6 +29,7 @@ export class RoutingConfig {
      * @param {Injector} injector
      */
     static config(router: UIRouter, injector: Injector) {
+
         const preloader: PreloaderService = injector.get(PreloaderService),
             routingMessage: RoutingHookInterface = injector.get(RoutingMessage),
             routingRedirect: RoutingHookInterface = injector.get(RoutingRedirect),
@@ -97,7 +99,22 @@ export class RoutingConfig {
                     message: null
                 },
                 component: SettingsComponent
-            },{
+            }, {
+                name: 'product',
+                url: '/product',
+                resolve: [
+                    {
+                        provide: 'token',
+                        token: 'myAwesomeData',
+                        useFactory: () => this.testDelay(),
+                        policy: {async: "WAIT"}
+                    },
+                ],
+                params: {
+                    message: null
+                },
+                component: ProductComponent
+            }, {
                 name: 'cart',
                 url: '/cart',
                 params: {

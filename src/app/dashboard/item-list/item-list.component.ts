@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from "@angular/core";
+import { Observable } from "rxjs/Observable";
+import { Movie } from "../../model/movie,model";
 
 @Component({
     selector: 'ng-item-list',
@@ -7,30 +9,13 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ItemListComponent {
+export class ItemListComponent implements OnChanges {
 
-    @Input() category;
-    items = [
-        {
-            name: 'Fast and Furious',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consectetur cupiditate deserunt dolorem molestias nihil, placeat quas reprehenderit soluta unde. Accusamus delectus doloribus nisi nostrum obcaecati odit quas similique, vel?'
-        }, {
-            name: 'Fast and Furious',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consectetur cupiditate deserunt dolorem molestias nihil, placeat quas reprehenderit soluta unde. Accusamus delectus doloribus nisi nostrum obcaecati odit quas similique, vel?'
-        }, {
-            name: 'Fast and Furious',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consectetur cupiditate deserunt dolorem molestias nihil, placeat quas reprehenderit soluta unde. Accusamus delectus doloribus nisi nostrum obcaecati odit quas similique, vel?'
-        }, {
-            name: 'Fast and Furious',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consectetur cupiditate deserunt dolorem molestias nihil, placeat quas reprehenderit soluta unde. Accusamus delectus doloribus nisi nostrum obcaecati odit quas similique, vel?'
-        }, {
-            name: 'Fast and Furious',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consectetur cupiditate deserunt dolorem molestias nihil, placeat quas reprehenderit soluta unde. Accusamus delectus doloribus nisi nostrum obcaecati odit quas similique, vel?'
-        }, {
-            name: 'Fast and Furious',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consectetur cupiditate deserunt dolorem molestias nihil, placeat quas reprehenderit soluta unde. Accusamus delectus doloribus nisi nostrum obcaecati odit quas similique, vel?'
-        }
-    ]
+    @Input() items: Array<Movie>;
 
+    constructor() {
+    }
 
+    ngOnChanges() {
+    }
 }
