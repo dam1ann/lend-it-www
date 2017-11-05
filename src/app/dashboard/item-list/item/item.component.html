@@ -1,12 +1,16 @@
-<mat-card  [@flyInOut]="state" id="toPlay">
+<mat-card  [@flyInOut] id="toPlay">
+	<img mat-card-image src="{{path + item.poster_path}}" alt="{{item.title}}">
 	<mat-card-header class="col">
 		<mat-card-title>
 			<h5>{{item.title}}</h5>
 		</mat-card-title>
-
 	</mat-card-header>
-	<img mat-card-image src="{{path + item.poster_path}}" alt="{{item.title}}">
+	<mat-card-subtitle>
+	</mat-card-subtitle>
+	<!--
 	<mat-card-actions>
-		<button type="button" mat-button>Buy</button>
+		<button type="button" mat-button>Buy
+		</button>
 	</mat-card-actions>
+	-->
 </mat-card>

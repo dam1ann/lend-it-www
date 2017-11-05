@@ -17,5 +17,6 @@ export class ItemListComponent implements OnChanges {
     }
 
     ngOnChanges() {
+        //console.log(this.items);
     }
 }

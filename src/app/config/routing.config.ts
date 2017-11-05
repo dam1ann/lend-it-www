@@ -11,7 +11,8 @@ import { LoginComponent } from "../login/login.component";
 import { Ng2StateDeclaration } from "@uirouter/angular";
 import { Injector } from "@angular/core";
 import { CartComponent } from "../cart/cart.component";
-import { ProductComponent } from "../product/product.component";
+import { ProductComponent } from "../dashboard/product/product.component";
+import { MockProduct } from "../mockBackend/mockProducts.service";
 
 export class RoutingConfig {
 
@@ -77,6 +78,20 @@ export class RoutingConfig {
                 },
                 component: RegistrationComponent
             }, {
+                name: 'settings',
+                url: '/settings',
+                params: {
+                    message: null
+                },
+                component: SettingsComponent
+            }, {
+                name: 'cart',
+                url: '/cart',
+                params: {
+                    message: null
+                },
+                component: CartComponent
+            }, {
                 name: 'dashboard',
                 url: '/',
                 resolve: [
@@ -91,37 +106,26 @@ export class RoutingConfig {
                     message: null
                 },
                 component: DashboardComponent
-            },
-            {
-                name: 'settings',
-                url: '/settings',
-                params: {
-                    message: null
-                },
-                component: SettingsComponent
             }, {
-                name: 'product',
-                url: '/product',
+                name: 'dashboard.product',
+                url: ':productId/:title',
+                component: ProductComponent,
                 resolve: [
                     {
-                        provide: 'token',
-                        token: 'myAwesomeData',
-                        useFactory: () => this.testDelay(),
-                        policy: {async: "WAIT"}
-                    },
+                        token: 'product',
+                        deps: [MockProduct, Transition],
+                        resolveFn: (mockProduct, transition)=>{
+                            //TODO add resolve function
+                            //console.log(transition.params());
+                            return this.testDelay();
+                        }
+                    }
                 ],
                 params: {
                     message: null
                 },
-                component: ProductComponent
-            }, {
-                name: 'cart',
-                url: '/cart',
-                params: {
-                    message: null
-                },
-                component: CartComponent
             }
         ];
     }
 }
+

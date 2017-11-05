@@ -11,6 +11,7 @@ import { NgModule } from "@angular/core";
 import { MockProduct } from "../mockBackend/mockProducts.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ProductComponent } from "./product/product.component";
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         ItemListComponent,
         ItemComponent,
         NavigationComponent,
-        FilterComponent
+        FilterComponent,
+        ProductComponent
     ],
     imports: [
         MaterialModules,
@@ -31,10 +33,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     providers: [
         MockProduct
     ],
-    exports: [DashboardComponent]
+    exports: [
+        DashboardComponent
+    ]
 })
 
-export class DashboardModule {
-
-}
-
+export class DashboardModule{}

@@ -23,7 +23,6 @@ import {RoutingMessage} from "./core/listener/routing/routing.message";
 import {RoutingAccessDeniedRedirect} from "./core/listener/routing/routing.access-denied-redirect";
 import {RoutingRedirect} from "./core/listener/routing/routing.redirect";
 import { CartModule } from "./cart/cart.module";
-import { ProductModule } from "./product/product.module";
 
 @NgModule({
     declarations: [
@@ -57,7 +56,6 @@ import { ProductModule } from "./product/product.module";
         HttpClientModule,
         HeaderModule,
         CartModule,
-        ProductModule,
         UIRouterModule.forRoot({
             otherwise: '/',
             states: RoutingConfig.mainStates(),
@@ -76,6 +74,7 @@ import { ProductModule } from "./product/product.module";
 })
 export class AppModule {
 }
+
 
 
 

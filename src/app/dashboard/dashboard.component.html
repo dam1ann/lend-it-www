@@ -1,19 +1,20 @@
 <mat-sidenav-container>
+	<ui-view>
+		<!--  CONTENT after open sidenav   -->
+		<mat-sidenav #sidenav>
+			<ng-navigation class="col-10"></ng-navigation>
+		</mat-sidenav>
 
-	<!--  CONTENT after open sidenav   -->
-	<mat-sidenav #sidenav>
-		<ng-navigation class="col-10"></ng-navigation>
-	</mat-sidenav>
+		<!-- Visible conntent -->
+		<div class="spacer"></div>
+		<div>
+			<button type="button" mat-button (click)="sidenav.open()">
+				<mat-icon>filter_list</mat-icon>
+			</button>
+		</div>
 
-	<!-- Visible conntent -->
-	<div class="spacer"></div>
-	<div>
-		<button type="button" mat-button (click)="sidenav.open()">
-			<mat-icon>filter_list</mat-icon>
-		</button>
-	</div>
-
-	<div class="container">
-		<ng-item-list class="col" [items]="movies| async"></ng-item-list>
-	</div>
+		<div class="container">
+			<ng-item-list class="col" [items]="movies| async"></ng-item-list>
+		</div>
+	</ui-view>
 </mat-sidenav-container>

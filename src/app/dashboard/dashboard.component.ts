@@ -12,12 +12,15 @@ import { Observable } from "rxjs/Observable";
 export class DashboardComponent implements OnInit {
 
     movies: Observable<Array<Movie>> = this.mockProduct.getPopular().map(movie=> movie.results);
+    details = this.mockProduct.getDetails(211672);
 
     constructor(private mockProduct: MockProduct) {
     }
 
     ngOnInit() {
-        this.movies.subscribe();
+        this.details.subscribe(data=>{
+            console.log(data);
+        });
     }
 
 }

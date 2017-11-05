@@ -11,7 +11,7 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
         trigger('flyInOut', [
             transition('void => *', [
                 style({
-                    transform: 'translateY(10%)',
+                    transform: 'translateY(5%)',
                     opacity: 0
                 }),
                 animate('300ms 500ms ease-in')

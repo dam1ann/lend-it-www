@@ -1,0 +1,23 @@
+<div class="spacer"></div>
+<div class="spacer"></div>
+<div class="spacer"></div>
+<div class="container card-container">
+	<div class=" card-content ">
+		<div class="row">
+			<div class="col-6">
+				<img src="{{poster_path| async}}" alt="" class="col-lg-10">
+			</div>
+			<div class="col-6">
+				<h1>{{title|async}}</h1>
+				<h5>{{overview| async}}</h5>
+				<div class="spacer"></div>
+				<div class="spacer"></div>
+				<div class="spacer"></div>
+				<button type="button" mat-raised-button color="primary" uiSref="cart">
+					<mat-icon>add_shopping_cart</mat-icon>
+					<span>Add to cart</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
