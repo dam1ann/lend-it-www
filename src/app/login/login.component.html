@@ -34,7 +34,7 @@
 					<mat-checkbox class="col">
 						Remember me
 					</mat-checkbox>
-					<button mat-raised-button color="accent" type="submit">
+					<button mat-raised-button color="accent" type="submit" (keyup.enter)="onSubmit(loginForm)">
 						<span>Log in</span>
 					</button>
 				</div>

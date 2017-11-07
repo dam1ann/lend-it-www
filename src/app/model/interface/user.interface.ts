@@ -1,4 +1,4 @@
-interface UserInterface extends ModelInterface {
+interface UserInterface {
     username: string
     email: string
     roles: Array<string>

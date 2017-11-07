@@ -13,6 +13,7 @@ import { Injector } from "@angular/core";
 import { CartComponent } from "../cart/cart.component";
 import { ProductComponent } from "../dashboard/product/product.component";
 import { MockProduct } from "../mockBackend/mockProducts.service";
+import { MoviesManager } from "../manager/movie.manager";
 
 export class RoutingConfig {
 
@@ -45,9 +46,7 @@ export class RoutingConfig {
             (transition: Transition) => routingAccessDeniedRedirect.handle(transition)
         );
 
-
-        router.transitionService.onStart({}, () => preloader.start());
-
+        router.transitionService.onBefore({}, () => preloader.start());
 
         router.transitionService.onSuccess({}, (transition: Transition) => {
             routingMessage.handle(transition);
@@ -96,10 +95,15 @@ export class RoutingConfig {
                 url: '/',
                 resolve: [
                     {
-                        provide: 'token',
-                        token: 'myAwesomeData',
-                        useFactory: () => this.testDelay(),
-                        policy: {async: "WAIT"}
+                        token: 'movies',
+                        deps: [MoviesManager],
+                        resolveFn: (moviesMng) => {
+                            console.log(moviesMng);
+                            return moviesMng.getMovies().map(movies => movies.collection)
+                        },
+                        policy: {
+                            async: 'WAIT'
+                        }
                     },
                 ],
                 params: {
@@ -108,13 +112,13 @@ export class RoutingConfig {
                 component: DashboardComponent
             }, {
                 name: 'dashboard.product',
-                url: ':productId/:title',
+                url: ':productId',
                 component: ProductComponent,
                 resolve: [
                     {
                         token: 'product',
                         deps: [MockProduct, Transition],
-                        resolveFn: (mockProduct, transition)=>{
+                        resolveFn: (mockProduct, transition) => {
                             //TODO add resolve function
                             //console.log(transition.params());
                             return this.testDelay();

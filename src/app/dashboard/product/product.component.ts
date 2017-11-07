@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.product.subscribe(data => {
-            console.log(data);
+            //console.log(data);
         })
     }
 

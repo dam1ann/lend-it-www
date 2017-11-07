@@ -18,7 +18,6 @@ export class UserManager {
         'roles': []
     });
 
-
     get getUser(): BehaviorSubject<UserInterface> {
         return this.observableUser;
     }

@@ -10,6 +10,7 @@ export interface AppConfig {
     urls: {
         me: string,
         registry: string,
+        movies: string
     };
 }
 
@@ -20,6 +21,7 @@ export const APP_CONFIGURATION: AppConfig = {
     auth_url: 'http://lend-it-api.com/app_dev.php/oauth/v2/token',
     urls: {
         me: 'http://lend-it-api.com/app_dev.php/api/me',
-        registry: 'http://lend-it-api.com/app_dev.php/api/registry'
+        registry: 'http://lend-it-api.com/app_dev.php/api/registry',
+        movies: 'http://lend-it-api.com/app_dev.php/api/movies'
     }
 };

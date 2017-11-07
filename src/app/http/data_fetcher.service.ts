@@ -14,4 +14,8 @@ export class DataFetcherService {
         });
 
     }
+
+    GET(url: string) {
+        return this.http.get(url);
+    }
 }

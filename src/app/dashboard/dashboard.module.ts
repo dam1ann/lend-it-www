@@ -12,6 +12,7 @@ import { MockProduct } from "../mockBackend/mockProducts.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ProductComponent } from "./product/product.component";
+import { MoviesManager } from "../manager/movie.manager";
 
 @NgModule({
     declarations: [
@@ -31,7 +32,9 @@ import { ProductComponent } from "./product/product.component";
         BrowserAnimationsModule
     ],
     providers: [
-        MockProduct
+        MockProduct,
+        MoviesManager
+
     ],
     exports: [
         DashboardComponent

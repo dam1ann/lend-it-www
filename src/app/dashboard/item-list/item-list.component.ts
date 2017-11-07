@@ -11,7 +11,7 @@ import { Movie } from "../../model/movie,model";
 
 export class ItemListComponent implements OnChanges {
 
-    @Input() items: Array<Movie>;
+    @Input() movies: Array<Movie>;
 
     constructor() {
     }

@@ -21,17 +21,18 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
 })
 
 export class ItemComponent implements OnInit,OnChanges{
-    @Input() item: Movie;
-    path: string="https://image.tmdb.org/t/p/w500/";
+    @Input() movie: Movie;
+
+
 
     constructor() {
     }
 
 
     ngOnInit(){
+        console.log(this.movie)
     }
 
     ngOnChanges(){
-        //console.log(this.item)
     }
 }

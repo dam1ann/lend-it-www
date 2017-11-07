@@ -1,4 +1,4 @@
-interface AuthInterface extends ModelInterface {
+interface AuthInterface {
     accessToken: string;
     expiredIn: number;
     refreshToken: string;
