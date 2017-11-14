@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from "@angular/core";
 import { Movie } from "../../../model/movie,model";
-import { animate, state, style, transition, trigger } from "@angular/animations";
+import { animate, style, transition, trigger } from "@angular/animations";
 
 @Component({
     selector: 'ng-item',
     templateUrl: './item.component.html',
     styleUrls: ['./item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations:[
+    animations: [
         trigger('flyInOut', [
             transition('void => *', [
                 style({
@@ -20,19 +20,17 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
     ]
 })
 
-export class ItemComponent implements OnInit,OnChanges{
+export class ItemComponent implements OnInit, OnChanges {
     @Input() movie: Movie;
-
 
 
     constructor() {
     }
 
-
-    ngOnInit(){
-        console.log(this.movie)
+    ngOnInit() {
+        // console.log(this.movie)
     }
 
-    ngOnChanges(){
+    ngOnChanges() {
     }
 }

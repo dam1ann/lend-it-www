@@ -24,18 +24,17 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-        this.accessMng.isLoggedIn.subscribe();
     }
 
     ngAfterViewInit() {
-        let header = this.elRef.nativeElement.querySelector('.header').classList,
+        const header = this.elRef.nativeElement.querySelector('.header').classList,
             source = Observable.fromEvent(document, 'scroll');
 
         source.map(() => window.scrollY)
             .subscribe(scrollY => {
                 if (scrollY > 56) {
                     header.add('small');
-                } else{
+                } else {
                     header.remove('small');
                 }
             });

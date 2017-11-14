@@ -98,11 +98,11 @@ export class RoutingConfig {
                         token: 'movies',
                         deps: [MoviesManager],
                         resolveFn: (moviesMng) => {
-                            console.log(moviesMng);
-                            return moviesMng.getMovies().map(movies => movies.collection)
+                            return moviesMng.getAllMovies;
                         },
                         policy: {
-                            async: 'WAIT'
+                            async: 'WAIT',
+                            when: 'LAZY'
                         }
                     },
                 ],
@@ -119,8 +119,6 @@ export class RoutingConfig {
                         token: 'product',
                         deps: [MockProduct, Transition],
                         resolveFn: (mockProduct, transition) => {
-                            //TODO add resolve function
-                            //console.log(transition.params());
                             return this.testDelay();
                         }
                     }

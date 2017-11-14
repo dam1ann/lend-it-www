@@ -25,14 +25,10 @@ export class ProductComponent implements OnInit, OnChanges {
     overview = this.product
         .map(movie => movie.overview);
 
-
     constructor(private mockProduct: MockProduct) {
     }
 
     ngOnInit() {
-        this.product.subscribe(data => {
-            //console.log(data);
-        })
     }
 
     ngOnChanges() {
