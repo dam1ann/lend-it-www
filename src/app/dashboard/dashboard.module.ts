@@ -8,7 +8,6 @@ import { FilterComponent } from "./filter/filter.component";
 import { UIRouterModule } from "@uirouter/angular";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { MockProduct } from "../mockBackend/mockProducts.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ProductComponent } from "./product/product.component";
@@ -32,13 +31,12 @@ import { MoviesManager } from "../manager/movie.manager";
         BrowserAnimationsModule
     ],
     providers: [
-        MockProduct,
         MoviesManager
-
     ],
     exports: [
         DashboardComponent
     ]
 })
 
-export class DashboardModule{}
+export class DashboardModule {
+}

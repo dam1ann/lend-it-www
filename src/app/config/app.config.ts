@@ -10,7 +10,8 @@ export interface AppConfig {
     urls: {
         me: string,
         registry: string,
-        movies: string
+        movies: string,
+        singleMovie: string
     };
 }
 
@@ -22,6 +23,7 @@ export const APP_CONFIGURATION: AppConfig = {
     urls: {
         me: 'http://lend-it-api.com/app_dev.php/api/me',
         registry: 'http://lend-it-api.com/app_dev.php/api/registry',
-        movies: 'http://lend-it-api.com/app_dev.php/api/movies'
+        movies: 'http://lend-it-api.com/app_dev.php/api/movies',
+        singleMovie: 'http://lend-it-api.com/app_dev.php/api/movie/'
     }
 };

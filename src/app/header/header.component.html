@@ -4,11 +4,28 @@
 			<mat-icon>explore</mat-icon>
 			<span>LendIt!</span>
 		</button>
-
 	</div>
 
+	<div>
+		<form>
+			<mat-form-field>
+				<input type="text"
+					   placeholder="Type something... "
+					   aria-label="Number"
+					   matInput [formControl]="myControl"
+					   [matAutocomplete]="auto">
+				<mat-autocomplete #auto="matAutocomplete">
+					<mat-option *ngFor="let option of filteredOptions | async"  [value]="option">
+						{{ option }}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
+		</form>
+	</div>
+
+
 	<!-- After login -->
-	<div [hidden]="!(data|async)" class="account_settings">
+	<div [hidden]="!(data | async)" class="account_settings">
 
 		<!-- Icons -->
 		<button type="button" mat-icon-button>

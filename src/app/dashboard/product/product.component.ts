@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnChanges, OnInit } from "@angular/core";
-import { MockProduct } from "../../mockBackend/mockProducts.service";
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
+import { MoviesManager } from '../../manager/movie.manager';
+import { Observable } from 'rxjs/Observable';
+import { Movie } from '../../model/movie,model';
 @Component({
     selector: 'ng-product',
     templateUrl: './product.component.html',
@@ -9,23 +11,9 @@ import { MockProduct } from "../../mockBackend/mockProducts.service";
 
 export class ProductComponent implements OnInit, OnChanges {
 
-    path: string = "https://image.tmdb.org/t/p/w500/";
-    product = this.mockProduct.getPopular()
-        .map(movies => movies.results[0]);
+    @Input() product: Observable<Movie>;
 
-    poster_path = this.product
-        .map(movie => this.path + movie.poster_path);
-
-    backdrop_path = this.product
-        .map(movie => this.path + movie.backdrop_path);
-
-    title = this.product
-        .map(movie => movie.title);
-
-    overview = this.product
-        .map(movie => movie.overview);
-
-    constructor(private mockProduct: MockProduct) {
+    constructor(private moviesMng: MoviesManager) {
     }
 
     ngOnInit() {

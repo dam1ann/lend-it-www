@@ -12,7 +12,6 @@ import { Ng2StateDeclaration } from "@uirouter/angular";
 import { Injector } from "@angular/core";
 import { CartComponent } from "../cart/cart.component";
 import { ProductComponent } from "../dashboard/product/product.component";
-import { MockProduct } from "../mockBackend/mockProducts.service";
 import { MoviesManager } from "../manager/movie.manager";
 
 export class RoutingConfig {
@@ -112,14 +111,14 @@ export class RoutingConfig {
                 component: DashboardComponent
             }, {
                 name: 'dashboard.product',
-                url: ':productId',
+                url: ':id',
                 component: ProductComponent,
                 resolve: [
                     {
                         token: 'product',
-                        deps: [MockProduct, Transition],
-                        resolveFn: (mockProduct, transition) => {
-                            return this.testDelay();
+                        deps: [MoviesManager, Transition],
+                        resolveFn: (moviesMng, transition) => {
+                            return moviesMng.getSingleMovie(transition.params().id);
                         }
                     }
                 ],

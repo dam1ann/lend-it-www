@@ -5,11 +5,11 @@
 	<div class=" card-content ">
 		<div class="row">
 			<div class="col-6">
-				<img src="{{poster_path| async}}" alt="" class="col-lg-10">
+				<img src="{{(product|async)?.imagePath}}" alt="" class="col-lg-10">
 			</div>
 			<div class="col-6">
-				<h1>{{title|async}}</h1>
-				<h5>{{overview| async}}</h5>
+				<h1>{{(product|async)?.title}}</h1>
+				<h5>{{(product| async)?.description}}</h5>
 				<div class="spacer"></div>
 				<div class="spacer"></div>
 				<div class="spacer"></div>
