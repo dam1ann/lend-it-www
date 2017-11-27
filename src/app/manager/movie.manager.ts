@@ -22,9 +22,7 @@ export class MoviesManager {
 
         this.fetcher.GET(movies)
             .map(movies => movies['collection'])
-            .subscribe(data => {
-                this.movies.next(data);
-            });
+            .subscribe(this.movies);
     }
 
     getSingleMovie(id) {

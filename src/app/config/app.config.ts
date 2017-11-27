@@ -16,14 +16,14 @@ export interface AppConfig {
 }
 
 export const APP_CONFIGURATION: AppConfig = {
-    client_id: '3_2bi16620185c8wk400s0cs0g0kwgsocwsscwgwcgg804ggw880',
+    client_id: '1_x6s9gwd49dcs8o0g0kcocgkw4s84kkkwcg8c0sokwc4ssc8g4',
     grant_type: 'password',
-    client_secret: 'mxahs09i9wgg4oo4owg88wccs088wc8sskcscww0ooco0wkgw',
-    auth_url: 'http://lend-it-api.com/app_dev.php/oauth/v2/token',
+    client_secret: '3wy05mtrii0wog4oo0woc4ogs80co0ckg4so48s4c4w4g0g8c4',
+    auth_url: 'https://powerful-meadow-36630.herokuapp.com/app_dev.php/oauth/v2/token',
     urls: {
-        me: 'http://lend-it-api.com/app_dev.php/api/me',
-        registry: 'http://lend-it-api.com/app_dev.php/api/registry',
-        movies: 'http://lend-it-api.com/app_dev.php/api/movies',
-        singleMovie: 'http://lend-it-api.com/app_dev.php/api/movie/'
+        me: 'https://powerful-meadow-36630.herokuapp.com/app_dev.php/api/me',
+        registry: 'https://powerful-meadow-36630.herokuapp.com/app_dev.php/api/registry',
+        movies: 'https://powerful-meadow-36630.herokuapp.com/app_dev.php/api/movies',
+        singleMovie: 'https://powerful-meadow-36630.herokuapp.com/app_dev.php/api/movie/'
     }
 };

@@ -28,7 +28,6 @@ import { CartModule } from "./cart/cart.module";
     declarations: [
         AppComponent
     ],
-
     providers: [{
         provide: HTTP_INTERCEPTORS,
         useClass: RequestInterceptor,
@@ -74,8 +73,3 @@ import { CartModule } from "./cart/cart.module";
 })
 export class AppModule {
 }
-
-
-
-
-

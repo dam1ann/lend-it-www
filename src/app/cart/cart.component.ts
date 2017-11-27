@@ -11,9 +11,6 @@ import { Movie } from "../model/movie,model";
 export class CartComponent{
     @Input() movies: Movie;
 
-
     constructor(){
-
     }
-
 }

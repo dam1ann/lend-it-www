@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit, OnChanges {
 
     @Input() movies;
 
-    constructor(private movieMng: MoviesManager) {
+    constructor() {
     }
 
     ngOnInit() {

@@ -96,13 +96,7 @@ export class RoutingConfig {
                     {
                         token: 'movies',
                         deps: [MoviesManager],
-                        resolveFn: (moviesMng) => {
-                            return moviesMng.getAllMovies;
-                        },
-                        policy: {
-                            async: 'WAIT',
-                            when: 'LAZY'
-                        }
+                        resolveFn: ResolveMovie
                     },
                 ],
                 params: {
@@ -117,9 +111,7 @@ export class RoutingConfig {
                     {
                         token: 'product',
                         deps: [MoviesManager, Transition],
-                        resolveFn: (moviesMng, transition) => {
-                            return moviesMng.getSingleMovie(transition.params().id);
-                        }
+                        resolveFn: ResolveSingleMovie
                     }
                 ],
                 params: {
@@ -128,5 +120,14 @@ export class RoutingConfig {
             }
         ];
     }
+}
+
+
+export function ResolveMovie(moviesMng) {
+    return moviesMng.getAllMovies;
+}
+
+export function ResolveSingleMovie(moviesMng, transition) {
+    return moviesMng.getSingleMovie(transition.params().id);
 }
 
