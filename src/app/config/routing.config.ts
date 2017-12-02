@@ -13,6 +13,7 @@ import { Injector } from "@angular/core";
 import { CartComponent } from "../cart/cart.component";
 import { ProductComponent } from "../dashboard/product/product.component";
 import { MoviesManager } from "../manager/movie.manager";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 export class RoutingConfig {
 
@@ -37,7 +38,7 @@ export class RoutingConfig {
             routingAccessDeniedRedirect: RoutingHookInterface = injector.get(RoutingAccessDeniedRedirect)
         ;
 
-        router.transitionService.onBefore({to: (state) => state.name === 'registration' || state.name === 'login'},
+        router.transitionService.onBefore({to: state => state.name === 'registration' || state.name === 'login'},
             (transition: Transition) => routingRedirect.handle(transition)
         );
 
@@ -51,6 +52,10 @@ export class RoutingConfig {
             routingMessage.handle(transition);
             preloader.stop();
         });
+
+        router.transitionService.onError({}, (transition: Transition) =>{
+            preloader.stop();
+        })
     }
 
 
@@ -124,7 +129,7 @@ export class RoutingConfig {
 
 
 export function ResolveMovie(moviesMng) {
-    return moviesMng.getAllMovies;
+     return moviesMng.getPopular();
 }
 
 export function ResolveSingleMovie(moviesMng, transition) {

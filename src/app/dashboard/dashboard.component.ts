@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnInit } from "@angular/core";
-import { MoviesManager } from "../manager/movie.manager";
 
 @Component({
     selector: 'ng-dashboard',
@@ -7,7 +6,7 @@ import { MoviesManager } from "../manager/movie.manager";
     styleUrls: ['./dashboard.component.scss']
 })
 
-export class DashboardComponent implements OnInit, OnChanges {
+export class DashboardComponent implements OnInit {
 
     @Input() movies;
 
@@ -15,11 +14,5 @@ export class DashboardComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-    }
-
-    ngOnChanges() {
-        // let dane;
-        // this.movies.subscribe(data => dane = data);
-        // this.movieMng.setMoviesData(dane);
     }
 }

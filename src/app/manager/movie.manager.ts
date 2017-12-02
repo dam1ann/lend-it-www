@@ -6,23 +6,15 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class MoviesManager {
 
-    private movies = new BehaviorSubject([]);
-
-    get getAllMovies() {
-        return this.movies;
-    }
-
     constructor(private fetcher: DataFetcherService,
                 private injector: Injector) {
-        this.getPopular();
     }
 
-    getPopular(): void {
+    getPopular() {
         const {movies} = this.injector.get(APP_CONFIG).urls;
 
-        this.fetcher.GET(movies)
+        return this.fetcher.GET(movies)
             .map(movies => movies['collection'])
-            .subscribe(this.movies);
     }
 
     getSingleMovie(id) {
