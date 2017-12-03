@@ -13,11 +13,17 @@ export class ItemListComponent implements OnChanges {
 
     @Input() movies: Array<Movie>;
 
+
+    filters = [
+      {value: 'steak-0', viewValue: 'Popular'},
+      {value: 'pizza-1', viewValue: 'Most rated'},
+      {value: 'tacos-2', viewValue: 'Incoming'}
+    ];
+
     constructor() {
     }
 
     ngOnChanges() {
-        // console.log(this.items);
     }
 }
 

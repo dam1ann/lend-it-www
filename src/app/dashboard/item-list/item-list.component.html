@@ -1,5 +1,24 @@
-<div class="row">
-	<div *ngFor="let movie of movies" class="col-lg-3 col-md-6">
-		<ng-item class="col" [movie]="movie" uiSref=".product" [uiParams]="{id: movie.id}"></ng-item>
-	</div>
+<div class="spacer"></div>
+
+<div class="itemsView">
+  <div class="col">
+    <mat-form-field>
+      <mat-select placeholder="Sort by">
+        <mat-option *ngFor="let filter of filters" [value]="filter.value">
+          {{ filter.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let movie of movies" class="col-lg-3 col-md-6">
+      <ng-item class="col" [movie]="movie" uiSref=".product" [uiParams]="{id: movie.id}"></ng-item>
+    </div>
+  </div>
 </div>
+
+<mat-paginator [length]="100"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

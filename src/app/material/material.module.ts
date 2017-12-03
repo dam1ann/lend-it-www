@@ -26,11 +26,13 @@ import {
     MatSnackBarModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
 } from "@angular/material";
 import { OverlayModule } from "@angular/cdk/overlay";
 import { PortalModule } from "@angular/cdk/portal";
 import { PlatformModule } from "@angular/cdk/platform";
+
 
 const materialModules = [
     MatAutocompleteModule,
@@ -57,6 +59,7 @@ const materialModules = [
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatPaginatorModule,
     OverlayModule,
     PortalModule,
     PlatformModule,

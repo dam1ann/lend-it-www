@@ -53,7 +53,7 @@ export class RoutingConfig {
             preloader.stop();
         });
 
-        router.transitionService.onError({}, (transition: Transition) =>{
+        router.transitionService.onError({}, () =>{
             preloader.stop();
         })
     }

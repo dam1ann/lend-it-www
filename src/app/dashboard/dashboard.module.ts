@@ -4,7 +4,6 @@ import { ItemComponent } from "./item-list/item/item.component";
 import { MaterialModules } from "../material/material.module";
 import { SettingsModule } from "../settings/settings.module";
 import { DashboardComponent } from "./dashboard.component";
-import { FilterComponent } from "./filter/filter.component";
 import { UIRouterModule } from "@uirouter/angular";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
@@ -19,7 +18,6 @@ import { MoviesManager } from "../manager/movie.manager";
         ItemListComponent,
         ItemComponent,
         NavigationComponent,
-        FilterComponent,
         ProductComponent
     ],
     imports: [
