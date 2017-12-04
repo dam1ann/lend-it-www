@@ -16,10 +16,10 @@ export interface AppConfig {
 }
 
 export const APP_CONFIGURATION: AppConfig = {
-    client_id: '1_x6s9gwd49dcs8o0g0kcocgkw4s84kkkwcg8c0sokwc4ssc8g4',
+    client_id: '3_2vbblz3i7k2scok08k0wc4s40wwokswgko04wkcc0800g848w4',
     grant_type: 'password',
-    client_secret: '3wy05mtrii0wog4oo0woc4ogs80co0ckg4so48s4c4w4g0g8c4',
-    auth_url: 'https://len-it-api.herokuapp.com/app_dev.php/oauth/v2/token',
+    client_secret: '3qx09ro02gg04k088sgg4wcskcwogcgw48www4gc04o8s8ko0o',
+    auth_url: 'https://lend-it-api.herokuapp.com/app_dev.php/oauth/v2/token',
     urls: {
         me: 'https://lend-it-api.herokuapp.com/app_dev.php/api/me',
         registry: 'https://lend-it-api.herokuapp.com/app_dev.php/api/registry',
