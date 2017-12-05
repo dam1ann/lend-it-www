@@ -1,14 +1,22 @@
 <div class="spacer"></div>
 <div class="container">
-	<h3>Cart</h3>
+	<h3>Koszyk</h3>
+	<div class="spacer"></div>
+
+	<div class="col row" *ngFor="let movie of (movies | async)">
+		<mat-card >
+			{{movie | json}}
+			<mat-card-actions>
+				<mat-icon>clear</mat-icon>
+			</mat-card-actions>
+		</mat-card>
+		<div class="spacer-5"></div>
+	</div>
+
 	<div class="spacer-5"></div>
-
-	<mat-card class="col">
-
-	</mat-card>
-
-	<mat-card class="col">
-
-	</mat-card>
-
+	<div class="row justify-content-end" [hidden]="(movies | async).length == 0">
+		<div class="col-lg-4">
+			<span class="col">Suma</span>
+		</div>
+	</div>
 </div>

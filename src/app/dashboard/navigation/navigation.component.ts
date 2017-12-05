@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
     selector: 'ng-navigation',
@@ -7,9 +7,17 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class NavigationComponent {
-    @Input() category;
+export class NavigationComponent implements OnInit {
+    @Input() categories;
+    @Input() activeCategory;
     @Output() changeCategory = new EventEmitter();
 
+    constructor() {
+
+    }
+
+    ngOnInit() {
+        console.log(this.categories);
+    }
 
 }

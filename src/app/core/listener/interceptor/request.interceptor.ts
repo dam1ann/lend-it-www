@@ -1,5 +1,5 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { AccessManager } from "../../manager/access.manager";
+import { AccessManager } from "../../../manager/access.manager";
 import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 

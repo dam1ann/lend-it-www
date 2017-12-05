@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { MoviesManager } from "../manager/movie.manager";
 
 @Component({
     selector: 'ng-dashboard',
@@ -9,8 +10,9 @@ import { Component, Input, OnChanges, OnInit } from "@angular/core";
 export class DashboardComponent implements OnInit {
 
     @Input() movies;
+    categories = this.moviesMng.getCategories();
 
-    constructor() {
+    constructor(private moviesMng: MoviesManager) {
     }
 
     ngOnInit() {

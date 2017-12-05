@@ -4,7 +4,6 @@ import { PreloaderService } from "../core/preloader/service/preloader.service";
 import { RegistrationComponent } from "../registration/registration.component";
 import { RoutingRedirect } from "../core/listener/routing/routing.redirect";
 import { RoutingMessage } from "../core/listener/routing/routing.message";
-import { DashboardComponent } from "../dashboard/dashboard.component";
 import { SettingsComponent } from "../settings/settings.component";
 import { Transition, UIRouter } from "@uirouter/core/lib";
 import { LoginComponent } from "../login/login.component";
@@ -13,7 +12,8 @@ import { Injector } from "@angular/core";
 import { CartComponent } from "../cart/cart.component";
 import { ProductComponent } from "../dashboard/product/product.component";
 import { MoviesManager } from "../manager/movie.manager";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import { CartManager } from "../manager/cart.manager";
+import { DashboardComponent } from "../dashboard/dashboard.component";
 
 export class RoutingConfig {
 
@@ -53,7 +53,7 @@ export class RoutingConfig {
             preloader.stop();
         });
 
-        router.transitionService.onError({}, () =>{
+        router.transitionService.onError({}, () => {
             preloader.stop();
         })
     }
@@ -69,55 +69,58 @@ export class RoutingConfig {
             {
                 name: 'login',
                 url: '/login',
+                component: LoginComponent,
                 params: {
                     message: null
-                },
-                component: LoginComponent
+                }
             }, {
                 name: 'registration',
                 url: '/registration',
+                component: RegistrationComponent,
                 params: {
                     message: null
-                },
-                component: RegistrationComponent
+                }
             }, {
                 name: 'settings',
                 url: '/settings',
+                component: SettingsComponent,
                 params: {
                     message: null
-                },
-                component: SettingsComponent
+                }
             }, {
                 name: 'cart',
                 url: '/cart',
+                component: CartComponent,
+                resolve: [{
+                    token: 'movies',
+                    deps: [CartManager],
+                    resolveFn: ResolveCart
+                }],
                 params: {
                     message: null
-                },
-                component: CartComponent
+                }
             }, {
                 name: 'dashboard',
                 url: '/',
-                resolve: [
-                    {
-                        token: 'movies',
-                        deps: [MoviesManager],
-                        resolveFn: ResolveMovie
-                    },
+                component: DashboardComponent,
+                resolve: [{
+                    token: 'movies',
+                    deps: [MoviesManager],
+                    resolveFn: ResolveMovie
+                },
                 ],
                 params: {
                     message: null
-                },
-                component: DashboardComponent
+                }
             }, {
                 name: 'dashboard.product',
                 url: ':id',
                 component: ProductComponent,
-                resolve: [
-                    {
-                        token: 'product',
-                        deps: [MoviesManager, Transition],
-                        resolveFn: ResolveSingleMovie
-                    }
+                resolve: [{
+                    token: 'product',
+                    deps: [MoviesManager, Transition],
+                    resolveFn: ResolveSingleMovie
+                }
                 ],
                 params: {
                     message: null
@@ -129,10 +132,13 @@ export class RoutingConfig {
 
 
 export function ResolveMovie(moviesMng) {
-     return moviesMng.getPopular();
+    return moviesMng.getPopular();
 }
 
 export function ResolveSingleMovie(moviesMng, transition) {
     return moviesMng.getSingleMovie(transition.params().id);
 }
 
+export function ResolveCart(cartMng) {
+    return cartMng.getMovies();
+}

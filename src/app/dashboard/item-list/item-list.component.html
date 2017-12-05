@@ -1,7 +1,9 @@
 <div class="spacer"></div>
 
-<div class="itemsView">
-  <div class="col">
+<div class="row col itemsView justify-content-end">
+
+  <!-- SORT BY... -->
+  <div class="">
     <mat-form-field>
       <mat-select placeholder="Sort by">
         <mat-option *ngFor="let filter of filters" [value]="filter.value">
@@ -11,6 +13,18 @@
     </mat-form-field>
   </div>
 
+  <!-- YEAR FILTER -->
+  <!--<div class="col-lg-3">-->
+    <!--<mat-form-field>-->
+      <!--<mat-select placeholder="Year">-->
+        <!--<mat-option *ngFor="let year of years" [value]="year">-->
+          <!--{{ year }}-->
+        <!--</mat-option>-->
+      <!--</mat-select>-->
+    <!--</mat-form-field>-->
+  <!--</div>-->
+
+  <!-- MOVIES -->
   <div class="row">
     <div *ngFor="let movie of movies" class="col-lg-3 col-md-6">
       <ng-item class="col" [movie]="movie" uiSref=".product" [uiParams]="{id: movie.id}"></ng-item>
@@ -20,6 +34,8 @@
 
 <div class="spacer-5"></div>
 <div class="spacer-5"></div>
+
+<!-- PAGINATION -->
 <mat-paginator [length]="100"
                [pageSize]="10"
                [pageSizeOptions]="[5, 10, 25, 100]">

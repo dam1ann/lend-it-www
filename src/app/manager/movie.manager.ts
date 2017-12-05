@@ -1,7 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { DataFetcherService } from '../http/data_fetcher.service';
 import { APP_CONFIG } from '../config/app.config';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class MoviesManager {
@@ -13,13 +12,23 @@ export class MoviesManager {
     getPopular() {
         const {movies} = this.injector.get(APP_CONFIG).urls;
 
-        return this.fetcher.GET(movies)
-            .map(movies => movies['collection'])
+        return this.fetcher
+            .GET(movies)
+            .map(movies => movies['collection']);
     }
 
     getSingleMovie(id) {
         const {singleMovie} = this.injector.get(APP_CONFIG).urls;
 
-        return this.fetcher.GET(singleMovie + id);
+        return this.fetcher
+            .GET(singleMovie + id);
+    }
+
+    getCategories() {
+        const {categories} = this.injector.get(APP_CONFIG).urls;
+
+        return this.fetcher
+            .GET(categories)
+            .map(categories => categories['collection']);
     }
 }

@@ -12,7 +12,7 @@ import {NotFoundModule} from "./404/notFound.module";
 import {FooterModule} from "./footer/footer.module";
 import {HeaderModule} from "./header/header.module";
 import {LoginModule} from "./login/login.module";
-import {RequestInterceptor} from "./listener/interceptor/request.interceptor";
+import {RequestInterceptor} from "./core/listener/interceptor/request.interceptor";
 import {PreloaderService} from "./core/preloader/service/preloader.service";
 import {PreloaderModule} from "./core/preloader/preloader.module";
 import {APP_CONFIG, APP_CONFIGURATION} from "./config/app.config";

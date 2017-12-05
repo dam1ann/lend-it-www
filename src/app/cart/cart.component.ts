@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
+import { Observable } from "rxjs/Observable";
 import { Movie } from "../model/movie,model";
 
 @Component({
@@ -8,9 +9,12 @@ import { Movie } from "../model/movie,model";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class CartComponent{
-    @Input() movies: Movie;
+export class CartComponent implements OnInit {
+    @Input() movies: Observable<Array<Movie>>;
 
-    constructor(){
+    constructor() {
+    }
+
+    ngOnInit() {
     }
 }

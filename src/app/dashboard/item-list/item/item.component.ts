@@ -28,7 +28,7 @@ export class ItemComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        // console.log(this.movie)
+
     }
 
     ngOnChanges() {
