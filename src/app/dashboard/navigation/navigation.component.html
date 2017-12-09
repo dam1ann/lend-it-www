@@ -7,39 +7,16 @@
 		<div class="spacer"></div>
 		<div class="spacer"></div>
 		<div class="spacer"></div>
-		<div *ngFor="let category of (categories | async)">
-			<div *ngIf="category?.id === (activeCategory | async); then active else unactive"></div>
+		<div *ngFor="let category of (categories | async)" class="row col">
+			<div *ngIf="category?.id === activeCategory ; then active else unactive"></div>
 			<ng-template #active>
-				<button mat-button class="col" color="accent">{{category.name}}</button>
+				<button mat-button class="categoryButton" color="accent">{{category.name}}</button>
 			</ng-template>
 			<ng-template #unactive>
-				<button mat-button class="col">{{category.name}}</button>
+				<button mat-button class="categoryButton" (click)="newCategory(category)">{{category.name}}</button>
 			</ng-template>
 		</div>
 	</div>
-
-	<!--<div [hidden]="visible" class="row">-->
-		<!--<div class="spacer"></div>-->
-		<!--<div class="spacer"></div>-->
-		<!--<div class="spacer"></div>-->
-		<!--<div class="spacer"></div>-->
-		<!--<button mat-button class="col">Action</button>-->
-		<!--<button mat-button class="col">Adventure</button>-->
-		<!--<button mat-button class="col" color="accent">Animation</button>-->
-		<!--<button mat-button class="col">Comedy</button>-->
-		<!--<button mat-button class="col">Criminal</button>-->
-		<!--<button mat-button class="col">Documentary</button>-->
-		<!--<button mat-button class="col">Dramat</button>-->
-		<!--<button mat-button class="col">Family</button>-->
-		<!--<button mat-button class="col">Fantasy</button>-->
-		<!--<button mat-button class="col">History</button>-->
-		<!--<button mat-button class="col">Horror</button>-->
-		<!--<button mat-button class="col">Music</button>-->
-		<!--<button mat-button class="col">Thriller</button>-->
-		<!--<button mat-button class="col">Sci-Fi</button>-->
-		<!--<button mat-button class="col">War</button>-->
-		<!--<button mat-button class="col">Western</button>-->
-	<!--</div>-->
 </div>
 
 

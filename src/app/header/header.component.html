@@ -6,22 +6,22 @@
 		</button>
 	</div>
 
-	<div>
-		<form>
-			<mat-form-field>
-				<input type="text"
-					   placeholder="Type something... "
-					   aria-label="Number"
-					   matInput [formControl]="myControl"
-					   [matAutocomplete]="auto">
-				<mat-autocomplete #auto="matAutocomplete">
-					<mat-option *ngFor="let option of filteredOptions | async"  [value]="option">
-						{{ option }}
-					</mat-option>
-				</mat-autocomplete>
-			</mat-form-field>
-		</form>
-	</div>
+	<!--<div>-->
+		<!--<form>-->
+			<!--<mat-form-field>-->
+				<!--<input type="text"-->
+					   <!--placeholder="Type something... "-->
+					   <!--aria-label="Number"-->
+					   <!--matInput [formControl]="myControl"-->
+					   <!--[matAutocomplete]="auto">-->
+				<!--<mat-autocomplete #auto="matAutocomplete">-->
+					<!--<mat-option *ngFor="let option of filteredOptions | async"  [value]="option">-->
+						<!--{{ option }}-->
+					<!--</mat-option>-->
+				<!--</mat-autocomplete>-->
+			<!--</mat-form-field>-->
+		<!--</form>-->
+	<!--</div>-->
 
 
 	<!-- After login -->

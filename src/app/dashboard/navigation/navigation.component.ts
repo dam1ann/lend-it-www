@@ -9,15 +9,17 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 
 export class NavigationComponent implements OnInit {
     @Input() categories;
-    @Input() activeCategory;
     @Output() changeCategory = new EventEmitter();
+    activeCategory;
 
     constructor() {
-
     }
 
     ngOnInit() {
-        console.log(this.categories);
     }
 
+    newCategory(category) {
+        this.changeCategory.next(category);
+        this.activeCategory = category.id;
+    }
 }

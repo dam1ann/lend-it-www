@@ -2,12 +2,10 @@
 
   <div class="container">
     <div class="row">
-      <ng-navigation class="col-lg-2" [categories]="categories"></ng-navigation>
+      <ng-navigation class="col-lg-2" [categories]="categories" (changeCategory)="onChangeCategory($event)"></ng-navigation>
       <ng-item-list class="col" [movies]="movies| async"></ng-item-list>
     </div>
   </div>
-
-  {{(categories | async) | json}}
 
 </ui-view>
 <div class="spacer"></div>

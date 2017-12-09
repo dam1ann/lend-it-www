@@ -15,6 +15,12 @@ export class DashboardComponent implements OnInit {
     constructor(private moviesMng: MoviesManager) {
     }
 
+    onChangeCategory(data){
+        console.log('zmieniłeś');
+        console.log(data);
+
+    }
+
     ngOnInit() {
     }
 }
