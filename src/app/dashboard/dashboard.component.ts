@@ -1,26 +1,35 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { MoviesManager } from "../manager/movie.manager";
+import {Component, Input, OnChanges, OnInit} from "@angular/core";
+import {MoviesManager} from "../manager/movie.manager";
 
 @Component({
-    selector: 'ng-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss']
+  selector: 'ng-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnChanges {
 
-    @Input() movies;
-    categories = this.moviesMng.getCategories();
+  @Input() movies;
+  categories = this.moviesMng.getCategories();
 
-    constructor(private moviesMng: MoviesManager) {
-    }
+  constructor(private moviesMng: MoviesManager) {
+  }
 
-    onChangeCategory(data){
-        console.log('zmieniłeś');
-        console.log(data);
 
-    }
+  onChangeCategory(event) {
+    // console.log('zmieniłeś');
+    // console.log(data);
+  }
 
-    ngOnInit() {
-    }
+  onChangePage(page) {
+    console.log(page);
+    this.movies = this.moviesMng.getMoviesByPage(page);
+  }
+
+  ngOnInit() {
+
+  }
+
+  ngOnChanges() {
+  }
 }

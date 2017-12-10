@@ -26,7 +26,7 @@
 
   <!-- MOVIES -->
   <div class="row movieList">
-    <div *ngFor="let movie of movies" class="col-lg-3 col-md-6">
+    <div *ngFor="let movie of movies?.collection" class="col-lg-3 col-md-6">
       <ng-item class="col" [movie]="movie" uiSref=".product" [uiParams]="{id: movie.id}"></ng-item>
     </div>
   </div>
@@ -36,9 +36,8 @@
 <div class="spacer-5"></div>
 
 <!-- PAGINATION -->
-<mat-paginator [length]="100"
-               [pageSize]="10"
-               [pageSizeOptions]="[5, 10, 25, 100]">
+<mat-paginator [length]="40"
+               [pageIndex]="movies?.page - 1"
+               [pageSize]="movies?.limit"
+               [pageSizeOptions]="[movies?.limit]" (page)="onPageChange($event)">
 </mat-paginator>
-<div class="spacer"></div>
-<div class="spacer"></div>
