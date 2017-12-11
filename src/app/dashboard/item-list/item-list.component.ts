@@ -12,16 +12,20 @@ export class ItemListComponent implements OnInit, OnChanges {
 
   @Input() movies: Array<Movie>;
   @Output() changePage = new EventEmitter();
+  @Output() changeFilters = new EventEmitter();
 
   filters = [
-    {value: 'steak-0', viewValue: 'Popular'},
-    {value: 'pizza-1', viewValue: 'Most rated'},
-    {value: 'tacos-2', viewValue: 'Incoming'}
+    {value: 'title', viewValue: 'Tytuł'},
+    {value: 'releasedAt', viewValue: 'Data wydania'},
+    {value: 'id', viewValue: 'ID'}
   ];
-
-  years = [2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
+  selectedFilter: string;
 
   constructor() {
+  }
+
+  onFilterChange(filter) {
+    this.changeFilters.next(filter);
   }
 
   onPageChange(event) {

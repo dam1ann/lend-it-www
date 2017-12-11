@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ProductComponent } from "./product/product.component";
 import { MoviesManager } from "../manager/movie.manager";
 import { CartManager } from "../manager/cart.manager";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { CartManager } from "../manager/cart.manager";
         UIRouterModule,
         CommonModule,
         BrowserModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        FormsModule
     ],
     providers: [
         MoviesManager,

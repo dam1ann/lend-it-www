@@ -2,8 +2,13 @@
 
   <div class="container">
     <div class="row">
-      <ng-navigation class="col-lg-2" [categories]="categories" (changeCategory)="onChangeCategory($event)"></ng-navigation>
-      <ng-item-list class="col" [movies]="movies| async" (changePage)="onChangePage($event)"></ng-item-list>
+      <ng-navigation class="col-lg-2"
+                     [categories]="categories"
+                     (changeCategory)="onChangeCategory($event)"></ng-navigation>
+      <ng-item-list class="col"
+                    [movies]="movies| async"
+                    (changePage)="onChangePage($event)"
+                    (changeFilters)="onChangeFilters($event)"></ng-item-list>
     </div>
   </div>
 

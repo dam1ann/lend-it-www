@@ -132,7 +132,7 @@ export class RoutingConfig {
 
 
 export function ResolveMovie(moviesMng) {
-    return moviesMng.getPopular();
+    return moviesMng.getMovies();
 }
 
 export function ResolveSingleMovie(moviesMng, transition) {

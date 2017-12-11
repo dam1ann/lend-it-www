@@ -9,20 +9,13 @@ export class MoviesManager {
               private injector: Injector) {
   }
 
-  getPopular() {
+
+  getMovies(page: number = 1, sortBy: string = 'title') {
     const {movies} = this.injector.get(APP_CONFIG).urls;
 
     return this.fetcher
-      .GET(movies);
+      .GET(`${movies}?page=${page}&limit=20&sortBy[${sortBy}]=ASC`);
     // .map(movies => movies['collection']);
-  }
-
-  getMoviesByPage(page: number) {
-    const {movies} = this.injector.get(APP_CONFIG).urls;
-
-    return this.fetcher
-      .GET(`${movies}?page=${page}&limit=20`);
-      // .map(movies => movies['collection']);
   }
 
   getSingleMovie(id) {

@@ -3,9 +3,11 @@
 <div class="row col itemsView justify-content-end">
 
   <!-- SORT BY... -->
-  <div class="">
+  <div>
     <mat-form-field>
-      <mat-select placeholder="Sort by">
+      <mat-select placeholder="Sortuj"
+                  (change)="onFilterChange($event.value)"
+                  [(ngModel)]="selectedFilter">
         <mat-option *ngFor="let filter of filters" [value]="filter.value">
           {{ filter.viewValue }}
         </mat-option>
@@ -37,7 +39,7 @@
 
 <!-- PAGINATION -->
 <mat-paginator [length]="40"
-               [pageIndex]="movies?.page - 1"
+               [pageIndex]="movies?.page - 1 || 0"
                [pageSize]="movies?.limit"
                [pageSizeOptions]="[movies?.limit]" (page)="onPageChange($event)">
 </mat-paginator>

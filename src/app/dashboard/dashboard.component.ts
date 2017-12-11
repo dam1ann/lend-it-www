@@ -11,10 +11,10 @@ export class DashboardComponent implements OnInit, OnChanges {
 
   @Input() movies;
   categories = this.moviesMng.getCategories();
+  sortBy = undefined;
 
   constructor(private moviesMng: MoviesManager) {
   }
-
 
   onChangeCategory(event) {
     // console.log('zmieniłeś');
@@ -22,8 +22,12 @@ export class DashboardComponent implements OnInit, OnChanges {
   }
 
   onChangePage(page) {
-    console.log(page);
-    this.movies = this.moviesMng.getMoviesByPage(page);
+    this.movies = this.moviesMng.getMovies(page, this.sortBy);
+  }
+
+  onChangeFilters(sortBy) {
+    this.sortBy = sortBy;
+    this.movies = this.moviesMng.getMovies(1, sortBy);
   }
 
   ngOnInit() {
