@@ -16,10 +16,6 @@ export class RequestInterceptor implements HttpInterceptor {
     }
     const changedReq = req.clone({
       headers: req.headers.set('Authorization', 'Bearer ' + token)
-        // .set("Access-Control-Allow-Headers", "accessControlRequestHeaders")
-        // .set("Access-Control-Expose-Headers", "exposedHeaders")
-        // .set("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, HEAD, OPTIONS")
-        // .set("Access-Control-Allow-Origin", "*")
     });
 
     return next.handle(changedReq);
