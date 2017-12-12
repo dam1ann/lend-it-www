@@ -15,9 +15,9 @@ export class ItemListComponent implements OnInit, OnChanges {
   @Output() changeFilters = new EventEmitter();
 
   filters = [
-    {value: 'title', viewValue: 'Tytuł'},
+    {value: 'popularity', viewValue: 'Popularność'},
     {value: 'releasedAt', viewValue: 'Data wydania'},
-    {value: 'id', viewValue: 'ID'}
+    {value: 'title', viewValue: 'Tytuł'}
   ];
   selectedFilter: string;
 

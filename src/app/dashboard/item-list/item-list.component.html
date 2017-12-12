@@ -41,6 +41,6 @@
   <mat-paginator [length]="40"
                  [pageIndex]="movies?.page - 1"
                  [pageSize]="movies?.limit"
-                 [pageSizeOptions]="[movies?.limit]" (page)="onPageChange($event)">
+                 [pageSizeOptions]="[10,20,40]" (page)="onPageChange($event)">
   </mat-paginator>
 </div>
