@@ -12,7 +12,7 @@ import { CartManager } from "../../manager/cart.manager";
 
 export class ProductComponent implements OnInit, OnChanges {
 
-    @Input() product: Observable<Movie>;
+    @Input() product;
 
     constructor(private cartMng: CartManager) {
     }

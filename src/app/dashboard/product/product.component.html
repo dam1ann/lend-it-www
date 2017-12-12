@@ -4,39 +4,39 @@
 <div class="container card-container">
   <div class=" card-content ">
     <div class="row">
-      <div class="col-6">
-        <img src="{{(product|async)?.imagePath}}" alt="" class="col-lg-10">
+      <div class="col-lg-6">
+        <img src="{{(product)?.imagePath}}" alt="" class="col-lg-10">
       </div>
-      <div class="col-6">
-        <h1>{{(product|async)?.title}}</h1>
+      <div class="col-lg-6">
+        <h1>{{(product)?.title}}</h1>
         <div class="spacer"></div>
 
         <h5>
           <span class="label">Kategorie: </span>
-          <span *ngFor="let category of (product | async)?.categoriesIds">
+          <span *ngFor="let category of (product )?.categoriesIds">
           <span>{{category}} | </span>
         </span>
         </h5>
 
         <h5>
           <span class="label">Wersja językowa: </span>
-          <span>{{(product | async)?.language}}</span>
+          <span>{{(product )?.language}}</span>
         </h5>
 
         <h5>
           <span class="label">Data wydania: </span>
-          <span>{{(product | async)?.releasedAt}}</span>
+          <span>{{(product )?.releasedAt}}</span>
         </h5>
 
         <h5>
           <span class="label">Popularność: </span>
-          <span>{{(product | async)?.popularity}}</span>
+          <span>{{(product )?.popularity}}</span>
         </h5>
 
         <div class="spacer-5"></div>
         <div class="spacer-5"></div>
 
-        <h5>{{(product| async)?.description}}</h5>
+        <h5>{{(product)?.description}}</h5>
         <div class="spacer"></div>
         <div class="spacer"></div>
         <div class="spacer"></div>

@@ -122,9 +122,12 @@ export class RoutingConfig {
           resolveFn: ResolveSingleMovie
         }
         ],
+        resolvePolicy: {
+          async: 'WAIT',
+          when: 'LAZY'
+        },
         params: {
-          message: null,
-          data: null
+          message: null
         },
       }
     ];

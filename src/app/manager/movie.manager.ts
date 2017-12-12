@@ -54,7 +54,8 @@ export class MoviesManager {
     const {singleMovie} = this.injector.get(APP_CONFIG).urls;
 
     return this.fetcher
-      .GET(singleMovie + id);
+      .GET(singleMovie + id)
+      .toPromise();
   }
 
   /***
