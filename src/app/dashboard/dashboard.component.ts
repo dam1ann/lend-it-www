@@ -13,20 +13,24 @@ export class DashboardComponent implements OnInit, OnChanges {
   categories = this.moviesMng.getCategories();
   sortBy = 'popularity';
   category = 'all';
+  limit = 20;
 
   constructor(private moviesMng: MoviesManager) {
   }
 
   onChangeCategory(category) {
     this.category = category.id;
-    this.movies = this.moviesMng.getByCategory(1, this.sortBy, category.id);
+    this.movies = this.moviesMng.getByCategory(1, this.sortBy, category.id, this.limit);
   }
 
-  onChangePage(page) {
+  onChangePage(event) {
+    this.limit = event.pageSize;
+    const pageIndex = event.pageIndex + 1;
+
     if (this.category === 'all') {
-      this.movies = this.moviesMng.getMovies(page, this.sortBy);
+      this.movies = this.moviesMng.getMovies(pageIndex, this.sortBy, this.limit);
     } else {
-      this.moviesMng.getByCategory(page, this.sortBy, this.category);
+      this.movies = this.moviesMng.getByCategory(pageIndex, this.sortBy, this.category, this.limit);
     }
   }
 
@@ -34,14 +38,13 @@ export class DashboardComponent implements OnInit, OnChanges {
     this.sortBy = sortBy;
 
     if (this.category === 'all') {
-      this.movies = this.moviesMng.getMovies(1, this.sortBy);
+      this.movies = this.moviesMng.getMovies(1, this.sortBy, this.limit);
     } else {
-      this.movies = this.moviesMng.getByCategory(1, this.sortBy, this.category);
+      this.movies = this.moviesMng.getByCategory(1, this.sortBy, this.category, this.limit);
     }
   }
 
   ngOnInit() {
-
   }
 
   ngOnChanges() {

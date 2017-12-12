@@ -18,7 +18,6 @@ export class ProductComponent implements OnInit, OnChanges {
     }
 
     onBuyMovie() {
-        console.log('dodałeś!');
         this.cartMng.addMovie(this.product);
     }
 

@@ -29,14 +29,13 @@ export class ItemListComponent implements OnInit, OnChanges {
   }
 
   onPageChange(event) {
-    this.changePage.next(event.pageIndex + 1);
+    this.changePage.next(event);
   }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
-    // console.log(this.movies);
   }
 }
 

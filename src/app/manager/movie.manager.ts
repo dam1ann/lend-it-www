@@ -26,8 +26,9 @@ export class MoviesManager {
     const {moviesByCategory} = this.injector.get(APP_CONFIG).urls;
 
     return this.fetcher
-      .GET(`${moviesByCategory}${categoryId}/movies?page=${page}&limit=${limit}&sortBy[${sortBy}]=ASC`);
+      .GET(`${moviesByCategory}${categoryId}/movies?page=${page}&limit=${limit}&sortBy[${sortBy}]=DESC&with[]=category.movies`);
   }
+
 
   /***
    *
@@ -40,7 +41,7 @@ export class MoviesManager {
     const {movies} = this.injector.get(APP_CONFIG).urls;
 
     return this.fetcher
-      .GET(`${movies}?page=${page}&limit=${limit}&sortBy[${sortBy}]=ASC`);
+      .GET(`${movies}?page=${page}&limit=${limit}&sortBy[${sortBy}]=DESC&with[]=category.movies&with[]=category.movies`);
     // .map(movies => movies['collection']);
   }
 
@@ -60,11 +61,11 @@ export class MoviesManager {
    *
    * @returns {Observable<any>}
    */
-  getCategories() {
+  getCategories(sortBy: string = 'name') {
     const {categories} = this.injector.get(APP_CONFIG).urls;
 
     return this.fetcher
-      .GET(categories)
+      .GET(`${categories}?sortBy[${sortBy}]=ASC`)
       .map(categories => categories['collection']);
   }
 }

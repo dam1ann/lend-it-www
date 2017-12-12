@@ -2,25 +2,54 @@
 <div class="spacer"></div>
 <div class="spacer"></div>
 <div class="container card-container">
-	<div class=" card-content ">
-		<div class="row">
-			<div class="col-6">
-				<img src="{{(product|async)?.imagePath}}" alt="" class="col-lg-10">
-			</div>
-			<div class="col-6">
-				<h1>{{(product|async)?.title}}</h1>
-				<h5>{{(product| async)?.description}}</h5>
-				<div class="spacer"></div>
-				<div class="spacer"></div>
-				<div class="spacer"></div>
-				<button type="button"
-						mat-raised-button
-						(click) = "onBuyMovie()"
-						color="primary">
-					<mat-icon>add_shopping_cart</mat-icon>
-					<span>Add to cart</span>
-				</button>
-			</div>
-		</div>
-	</div>
+  <div class=" card-content ">
+    <div class="row">
+      <div class="col-6">
+        <img src="{{(product|async)?.imagePath}}" alt="" class="col-lg-10">
+      </div>
+      <div class="col-6">
+        <h1>{{(product|async)?.title}}</h1>
+        <div class="spacer"></div>
+
+        <h5>
+          <span class="label">Kategorie: </span>
+          <span *ngFor="let category of (product | async)?.categoriesIds">
+          <span>{{category}} | </span>
+        </span>
+        </h5>
+
+        <h5>
+          <span class="label">Wersja językowa: </span>
+          <span>{{(product | async)?.language}}</span>
+        </h5>
+
+        <h5>
+          <span class="label">Data wydania: </span>
+          <span>{{(product | async)?.releasedAt}}</span>
+        </h5>
+
+        <h5>
+          <span class="label">Popularność: </span>
+          <span>{{(product | async)?.popularity}}</span>
+        </h5>
+
+        <div class="spacer-5"></div>
+        <div class="spacer-5"></div>
+
+        <h5>{{(product| async)?.description}}</h5>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <button type="button"
+                color="accent"
+                mat-raised-button
+                (click)="onBuyMovie()"
+                color="primary"
+                class="addToCart">
+          <mat-icon>add_shopping_cart</mat-icon>
+          <span>Add to cart</span>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
