@@ -1,9 +1,8 @@
 <div class="spacer"></div>
 
-<div class="row col itemsView justify-content-end">
-
+<div class="row ">
   <!-- SORT BY... -->
-  <div>
+  <div class="row col justify-content-end">
     <mat-form-field>
       <mat-select placeholder="Sortuj"
                   (change)="onFilterChange($event.value)"
@@ -17,13 +16,13 @@
 
   <!-- YEAR FILTER -->
   <!--<div class="col-lg-3">-->
-    <!--<mat-form-field>-->
-      <!--<mat-select placeholder="Year">-->
-        <!--<mat-option *ngFor="let year of years" [value]="year">-->
-          <!--{{ year }}-->
-        <!--</mat-option>-->
-      <!--</mat-select>-->
-    <!--</mat-form-field>-->
+  <!--<mat-form-field>-->
+  <!--<mat-select placeholder="Year">-->
+  <!--<mat-option *ngFor="let year of years" [value]="year">-->
+  <!--{{ year }}-->
+  <!--</mat-option>-->
+  <!--</mat-select>-->
+  <!--</mat-form-field>-->
   <!--</div>-->
 
   <!-- MOVIES -->
@@ -38,8 +37,10 @@
 <div class="spacer-5"></div>
 
 <!-- PAGINATION -->
-<mat-paginator [length]="40"
-               [pageIndex]="movies?.page - 1 || 0"
-               [pageSize]="movies?.limit"
-               [pageSizeOptions]="[movies?.limit]" (page)="onPageChange($event)">
-</mat-paginator>
+<div [hidden]="!movies">
+  <mat-paginator [length]="40"
+                 [pageIndex]="movies?.page - 1"
+                 [pageSize]="movies?.limit"
+                 [pageSizeOptions]="[movies?.limit]" (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
