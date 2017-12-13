@@ -1,33 +1,52 @@
-import { Injectable } from "@angular/core";
-import { DataFetcherService } from "../http/data_fetcher.service";
-import { Movie } from "../model/movie,model";
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from "@angular/core";
+import {DataFetcherService} from "../http/data_fetcher.service";
+import {Movie} from "../model/movie,model";
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
+import {MyLocalStorageService} from "../core/local-storage/localStorage.service";
 
 @Injectable()
 export class CartManager {
 
-    moviesList = [];
+  moviesList: Array<any> = [];
 
-    constructor(private fetcher: DataFetcherService) {
-    }
+  constructor(private fetcher: DataFetcherService,
+              private localStorage: MyLocalStorageService) {
+  }
 
-    getMovies() {
-        return Observable.of(this.moviesList);
-    }
+  /***
+   *
+   * @returns {Observable<any[]>}
+   */
+  getMovies() {
+    this.moviesList = Array.prototype.slice.call(this.localStorage.getCart());
 
-    addMovie(movie: Observable<Movie>) {
-        movie.subscribe(mov => {
-            this.moviesList.push(mov);
-        });
-    }
+    return Observable.of(this.moviesList);
+  }
 
-    removeMovie(movie: Movie): void {
-        this.moviesList = this.moviesList.filter(element => element !== movie);
-    }
+  /***
+   *
+   * @param {Observable<Movie>} movie
+   */
+  addMovie(movie: Movie) {
+    this.moviesList.push(movie);
+    this.localStorage.saveCart(this.moviesList);
+  }
 
-    fetchCart() {
-        const url = '';
-        return this.fetcher.GET(url);
-    }
+  /***
+   *
+   * @param {Movie} movie
+   */
+  removeMovie(movie: Movie): void {
+    this.moviesList = this.moviesList.filter(element => element !== movie);
+  }
+
+  /***
+   *
+   * @returns {Observable<Object>}
+   */
+  fetchCart() {
+    const url = '';
+    return this.fetcher.GET(url);
+  }
 }

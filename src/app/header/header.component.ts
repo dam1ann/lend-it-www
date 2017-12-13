@@ -47,16 +47,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        const header = this.elRef.nativeElement.querySelector('.header').classList,
-            source = Observable.fromEvent(document, 'scroll');
-
-        source.map(() => window.scrollY)
-            .subscribe(scrollY => {
-                if (scrollY > 56) {
-                    header.add('small');
-                } else {
-                    header.remove('small');
-                }
-            });
+        // const header = this.elRef.nativeElement.querySelector('.header').classList,
+        //     source = Observable.fromEvent(document, 'scroll');
+        //
+        // source.map(() => window.scrollY)
+        //     .subscribe(scrollY => {
+        //         if (scrollY > 56) {
+        //             header.add('small');
+        //         } else {
+        //             header.remove('small');
+        //         }
+        //     });
     }
 }

@@ -124,7 +124,7 @@ export class RoutingConfig {
         ],
         resolvePolicy: {
           async: 'WAIT',
-          when: 'LAZY'
+          when: 'EAGER'
         },
         params: {
           message: null

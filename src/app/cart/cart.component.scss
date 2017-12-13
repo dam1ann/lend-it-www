@@ -1,4 +1,28 @@
-span{
-	font-size: 18px;
-	font-weight:600;
+mat-card {
+
+}
+
+span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+mat-card{
+  padding:0;
+}
+
+img {
+  margin: 0 !important;
+  padding-left: 0;
+}
+
+h5{
+  font-weight: 400;
+}
+
+.delete{
+  position: relative;
+  top:50%;
+  right: 0;
+  transform: translateY(-50%);
 }

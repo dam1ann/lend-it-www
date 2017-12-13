@@ -1,59 +1,74 @@
-import { Injectable } from "@angular/core";
-import { LocalStorageService } from "angular-2-local-storage";
-import { UserTransformer } from "../../transformer/user.transformer";
-import { Auth } from "../../model/auth.model";
-import { AuthTransformer } from "../../transformer/auth.transformer";
-import { Movie } from "../../model/movie,model";
+import {Injectable} from "@angular/core";
+import {LocalStorageService} from "angular-2-local-storage";
+import {UserTransformer} from "../../transformer/user.transformer";
+import {Auth} from "../../model/auth.model";
+import {AuthTransformer} from "../../transformer/auth.transformer";
+import {Movie} from "../../model/movie,model";
 
 @Injectable()
 export class MyLocalStorageService {
 
-    constructor(private localStorage: LocalStorageService,
-                private userTransformer: UserTransformer,
-                private authTransformer: AuthTransformer) {
-    }
+  constructor(private localStorage: LocalStorageService,
+              private userTransformer: UserTransformer,
+              private authTransformer: AuthTransformer) {
+  }
 
+  /***
+   *
+   * @returns {any}
+   */
+  getCart() {
+    return this.localStorage.get("cart");
+  }
 
-    /***
-     *
-     * @returns {AuthInterface}
-     */
-    getAuthDetails(): AuthInterface {
-        if (this.localStorage.keys().includes('auth')) {
-            return this.authTransformer.transform(this.localStorage.get('auth'));
-        }
-    }
+  /***
+   *
+   * @param {Array<Movie>} movies
+   */
+  saveCart(movies: Array<Movie>): void {
+    this.localStorage.set("cart", movies);
+  }
 
-    /***
-     *
-     * @param authDetail
-     */
-    saveAuthDetails(authDetail: Auth) {
-        this.localStorage.set('auth', authDetail);
+  /***
+   *
+   * @returns {AuthInterface}
+   */
+  getAuthDetails(): AuthInterface {
+    if (this.localStorage.keys().includes('auth')) {
+      return this.authTransformer.transform(this.localStorage.get('auth'));
     }
+  }
 
-    /***
-     *
-     * @returns {UserInterface}
-     */
-    getUser(): UserInterface {
-        if (this.localStorage.keys().includes('userDetails')) {
-            return this.userTransformer.transformFromLocalStorage(this.localStorage.get("userDetails"));
-        }
-    }
+  /***
+   *
+   * @param authDetail
+   */
+  saveAuthDetails(authDetail: Auth) {
+    this.localStorage.set('auth', authDetail);
+  }
 
-    /***
-     *
-     * @param user
-     */
-    saveUser(user: UserInterface): void {
-        this.localStorage.set("userDetails", user);
+  /***
+   *
+   * @returns {UserInterface}
+   */
+  getUser(): UserInterface {
+    if (this.localStorage.keys().includes('userDetails')) {
+      return this.userTransformer.transformFromLocalStorage(this.localStorage.get("userDetails"));
     }
+  }
 
-    /***
-     *
-     */
-    clean(): void {
-        this.localStorage.clearAll();
-    }
+  /***
+   *
+   * @param user
+   */
+  saveUser(user: UserInterface): void {
+    this.localStorage.set("userDetails", user);
+  }
+
+  /***
+   *
+   */
+  clean(): void {
+    this.localStorage.clearAll();
+  }
 }
