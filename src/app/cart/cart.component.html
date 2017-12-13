@@ -7,17 +7,15 @@
 
     <mat-card class="col">
       <div class="row">
-        <div class="col-lg-2">
-          <img class="col" mat-card-image src="{{movie.imagePath}}" alt="{{movie.title}}">
+        <div class="col-lg-1">
+          <img class="col row" mat-card-image src="{{movie.imagePath}}" alt="{{movie.title}}">
         </div>
         <div class="col row">
           <div class="col">
-            <div class="spacer"></div>
             <h5 class="col">{{movie.title}}</h5>
           </div>
-          <div class="col"></div>
           <div class="col">
-            <button mat-icon-button class="delete">
+            <button mat-icon-button class="delete col" (click)="removeFromCart(movie)">
               <mat-icon>delete</mat-icon>
             </button>
           </div>
@@ -25,17 +23,16 @@
       </div>
     </mat-card>
 
-    <div class="spacer-5"></div>
   </div>
 
   <div class="spacer-5"></div>
   <div class="spacer-5"></div>
-  <div class="row justify-content-end" [hidden]="(movies | async).length == 0">
-    <div class="col-lg-4">
-      <h3 class="col">Suma</h3>
+  <div class="row justify-content-end col" [hidden]="(movies | async).length == 0">
+    <div class="col-lg-4 ">
+      <!--<h3 class="col">Suma</h3>-->
       <div class="spacer-5"></div>
       <div class="spacer-5"></div>
-      <button mat-raised-button color="accent">Subscribe!</button>
+      <button mat-raised-button color="accent" class="float-lg-right">Subscribe!</button>
     </div>
   </div>
 

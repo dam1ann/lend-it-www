@@ -20,7 +20,6 @@ export class CartManager {
    */
   getMovies() {
     this.moviesList = Array.prototype.slice.call(this.localStorage.getCart());
-
     return Observable.of(this.moviesList);
   }
 
@@ -38,7 +37,8 @@ export class CartManager {
    * @param {Movie} movie
    */
   removeMovie(movie: Movie): void {
-    this.moviesList = this.moviesList.filter(element => element !== movie);
+    const newMovies = this.moviesList.filter(element => element !== movie);
+    this.localStorage.saveCart(newMovies);
   }
 
   /***
