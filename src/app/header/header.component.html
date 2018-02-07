@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="row header">
 	<div class="menu_section col">
-		<button type="button" uiSref="dashboard" mat-button>
-			<mat-icon>explore</mat-icon>
+		<button type="button" uiSref="dashboard" mat-button class="page-logo">
+			<mat-icon>theaters</mat-icon>
 			<span>LendIt!</span>
 		</button>
 	</div>
@@ -24,6 +24,8 @@
 	<!--</div>-->
 
 
+
+
 	<!-- After login -->
 	<div [hidden]="!(data | async)" class="account_settings">
 
@@ -34,8 +36,11 @@
 		<button type="button" mat-icon-button uiSref="cart">
 			<mat-icon>shopping_cart</mat-icon>
 		</button>
+	<button type="button" mat-icon-button uiSref="favourite">
+			<mat-icon>favorite_border</mat-icon>
+		</button>
 		<button type="button" mat-icon-button uiSref="settings">
-			<mat-icon>person</mat-icon>
+			<mat-icon>person_outline</mat-icon>
 		</button>
 		<button type="button" mat-icon-button [matMenuTriggerFor]="menu">
 			<mat-icon>more_vert</mat-icon>

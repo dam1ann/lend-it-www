@@ -29,8 +29,8 @@
         </h5>
 
         <!--<h5>-->
-          <!--<span class="label">Popularność: </span>-->
-          <!--<span>{{(product )?.popularity}}</span>-->
+        <!--<span class="label">Popularność: </span>-->
+        <!--<span>{{(product )?.popularity}}</span>-->
         <!--</h5>-->
 
         <div class="spacer-5"></div>
@@ -40,15 +40,38 @@
         <div class="spacer"></div>
         <div class="spacer"></div>
         <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+
+
+        <button type="button"
+                mat-button
+                class="addToFavourite"
+                color="accent">
+          <mat-icon>favorite_border</mat-icon>
+          <span>Dodaj do ulubionych</span>
+        </button>
         <button type="button"
                 color="accent"
                 mat-raised-button
-                (click)="onBuyMovie()"
+                (click)="onBuyMovie(addToCartButton)"
                 color="primary"
-                class="addToCart">
-          <mat-icon>add_shopping_cart</mat-icon>
+                class="addToCart"
+                #addToCartButton>
+          <!--<mat-icon>add_shopping_cart</mat-icon>-->
           <span>Dodaj do koszyka</span>
         </button>
+
+
+        <div class="product-likes">
+          <button mat-icon-button color="primary">
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+          <button mat-icon-button color="warn">
+            <mat-icon>thumb_down</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </div>

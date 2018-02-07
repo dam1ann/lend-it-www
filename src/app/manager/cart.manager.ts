@@ -28,6 +28,9 @@ export class CartManager {
    * @param {Observable<Movie>} movie
    */
   addMovie(movie: Movie) {
+    if (this.moviesList.includes(movie)) {
+      throw new Error('Cart contains that movie');
+    }
     this.moviesList.push(movie);
     this.localStorage.saveCart(this.moviesList);
   }
