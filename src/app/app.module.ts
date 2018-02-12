@@ -22,54 +22,56 @@ import {MyLocalStorageService} from "./core/local-storage/localStorage.service";
 import {RoutingMessage} from "./core/listener/routing/routing.message";
 import {RoutingAccessDeniedRedirect} from "./core/listener/routing/routing.access-denied-redirect";
 import {RoutingRedirect} from "./core/listener/routing/routing.redirect";
-import { CartModule } from "./cart/cart.module";
+import {CartModule} from "./cart/cart.module";
+import {LikesModule} from "./likes/likes.module";
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
-    providers: [{
-        provide: HTTP_INTERCEPTORS,
-        useClass: RequestInterceptor,
-        multi: true,
-    }, {
-        provide: APP_CONFIG,
-        useValue: APP_CONFIGURATION,
-    },
-        MyLocalStorageService,
-        PreloaderService,
-        RoutingMessage,
-        RoutingAccessDeniedRedirect,
-        RoutingRedirect
-    ],
-    imports: [
-        PreloaderModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        DashboardModule,
-        LoginModule,
-        FooterModule,
-        NotFoundModule,
-        RegistrationModule,
-        SettingsModule,
-        HttpClientModule,
-        HeaderModule,
-        CartModule,
-        UIRouterModule.forRoot({
-            otherwise: '/',
-            states: RoutingConfig.mainStates(),
-            useHash: false,
-            config: RoutingConfig.config
-        }),
-        LocalStorageModule.withConfig({
-            prefix: 'lendIt',
-            storageType: 'localStorage'
-        })
-    ],
-    bootstrap: [AppComponent],
-    exports: [
-        UIRouterModule
-    ]
+  declarations: [
+    AppComponent
+  ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: RequestInterceptor,
+    multi: true,
+  }, {
+    provide: APP_CONFIG,
+    useValue: APP_CONFIGURATION,
+  },
+    MyLocalStorageService,
+    PreloaderService,
+    RoutingMessage,
+    RoutingAccessDeniedRedirect,
+    RoutingRedirect
+  ],
+  imports: [
+    PreloaderModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    DashboardModule,
+    LoginModule,
+    FooterModule,
+    NotFoundModule,
+    RegistrationModule,
+    SettingsModule,
+    HttpClientModule,
+    HeaderModule,
+    CartModule,
+    LikesModule,
+    UIRouterModule.forRoot({
+      otherwise: '/',
+      states: RoutingConfig.mainStates(),
+      useHash: false,
+      config: RoutingConfig.config
+    }),
+    LocalStorageModule.withConfig({
+      prefix: 'lendIt',
+      storageType: 'localStorage'
+    })
+  ],
+  bootstrap: [AppComponent],
+  exports: [
+    UIRouterModule
+  ]
 })
 export class AppModule {
 }
