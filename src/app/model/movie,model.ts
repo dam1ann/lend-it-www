@@ -5,7 +5,7 @@ export class Movie implements MovieInterface{
     private _genreIds: number[];
     private _releaseAt: string;
     private _language: string;
-    private _imagePath: string;
+    private _image_Path: string;
 
     get id(): number {
         return this._id;
@@ -55,8 +55,8 @@ export class Movie implements MovieInterface{
         this._language = value;
     }
 
-    get imagePath(): string {
-        return this._imagePath;
+    get image_Path(): string {
+        return this._image_Path;
     }
 
     set imagePath(value: string) {

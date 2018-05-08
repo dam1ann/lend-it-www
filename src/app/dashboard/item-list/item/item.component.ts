@@ -23,7 +23,6 @@ import { animate, style, transition, trigger } from "@angular/animations";
 export class ItemComponent implements OnInit, OnChanges {
     @Input() movie: Movie;
 
-
     constructor() {
     }
 

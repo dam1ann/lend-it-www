@@ -5,5 +5,5 @@ interface MovieInterface{
     genreIds: Array<number>;
     releaseAt: string;
     language: string;
-    imagePath: string;
+    image_Path: string;
 }
