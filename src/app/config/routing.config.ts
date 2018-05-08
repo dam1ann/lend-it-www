@@ -14,7 +14,6 @@ import {ProductComponent} from "../dashboard/product/product.component";
 import {MoviesManager} from "../manager/movie.manager";
 import {CartManager} from "../manager/cart.manager";
 import {DashboardComponent} from "../dashboard/dashboard.component";
-import {LikesComponent} from "../likes/likes.component";
 
 export class RoutingConfig {
 
@@ -96,13 +95,6 @@ export class RoutingConfig {
         deps: [CartManager],
         resolveFn: ResolveCart
       }],
-      params: {
-        message: null
-      }
-    },  {
-      name: 'likes',
-      url: '/likes',
-      component: LikesComponent,
       params: {
         message: null
       }

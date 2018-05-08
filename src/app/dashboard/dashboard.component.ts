@@ -8,7 +8,6 @@ import {MoviesManager} from "../manager/movie.manager";
 })
 
 export class DashboardComponent implements OnInit, OnChanges {
-
   @Input() movies;
   categories = this.moviesMng.getCategories();
   sortBy = 'popularity';

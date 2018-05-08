@@ -19,7 +19,7 @@ export interface AppConfig {
 }
 
 export const APP_CONFIGURATION: AppConfig = {
-  domain: 'https://lend-it-api.herokuapp.com/app_dev.php/',
+  domain: 'https://lend-it-api.herokuapp.com/public/index.php/',
   client_id: '1_15cdcd5bbnxckw0kos04s4ccwcsk80c044kwsg0ksgog4s0c0g',
   grant_type: 'password',
   client_secret: 'n2x28twxu0gowwgg0kcwoscccwscso4oww4ossoc0wc0wss8c',
